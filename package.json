@@ -1,0 +1,19 @@
+{
+  "name": "former-fusion",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.8.4",
+    "gsap": "^3.12.5",
+    "split-text-js": "^1.0.3",
+    "splitting": "^1.0.6",
+    "typed.js": "^2.1.0"
+  }
+}

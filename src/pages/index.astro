@@ -1,0 +1,261 @@
+---
+import "../styles/style.css";
+import MainLayout from "../layouts/MainLayout.astro";
+import Button from "../components/Button.astro";
+import TextKasse from "../components/TextKasse.astro";
+---
+
+<MainLayout title="Web by Sebastian Elias.">
+  <div id="overlay"></div>
+  <main>
+    <article class="hero">
+      <div class="spline_bg">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/8zOTxRw8KJlFmp3y/scene.splinecode"></spline-viewer>
+      </div>
+      <div class="hero_text">
+        <h1>Helping brands to stand out in the digital era.</h1>
+        <p>Together we build the blocks of your vision - no nonsense, just bold digital solutions that make your brand stand out.</p>
+        <div>
+          <Button style="primary" linket="https://example.com">Contact me</Button>
+          <Button style="secondary" linket="https://example.com">Download CV</Button>
+        </div>
+      </div>
+    </article>
+
+    <TextKasse h2="Hey," image="public/images/cv-photo.png" image_alt="Billede af Sebastian Engelbreth">
+      <div class="kasse-text">
+        <h1>I'm <span class="input"></span></h1>
+        <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
+        <p>
+          <br />
+          I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
+        </p>
+      </div>
+    </TextKasse>
+
+    <div class="container">
+      <h2 class="text">Frontend Code<span>HTML, CSS, JavaScript, Astro, React & Next.js</span></h2>
+      <h2 class="text">UX/UI<span>Figma & Adobe (Photoshop, Illustrator, Premiere Pro)</span></h2>
+      <h2 class="text">Audio<span>Ableton</span></h2>
+      <h2 class="text">Teamwork<span>GitHub, Trello, Scrum etc.</span></h2>
+      <h2 class="text">Practical Tools<span>Microsoft 365 (Excel, Word, Powerpoint)</span></h2>
+    </div>
+
+    <span class="button-line"></span>
+  </main>
+
+  <script>
+    import Typed from "typed.js";
+
+    const typed = new Typed(".input", {
+      strings: ["Sebastian Engelbreth", "Web Developer", "UI/UX Designer"],
+      typeSpeed: 70,
+      backSpeed: 65,
+      loop: true,
+    });
+  </script>
+</MainLayout>
+
+<style>
+  .hero {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .hero_text {
+    z-index: 1;
+    grid-area: 3 / 2 / 5 / 5;
+    font-family: var(--font_body);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  p {
+    font-size: var(--font_size_large);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin-inline: 10%;
+  }
+
+  .text {
+    font-family: var(--font_body);
+    font-size: 4rem;
+    letter-spacing: -0.01em;
+    line-height: 100%;
+    width: 100%;
+    color: rgb(182, 182, 182, 0.2);
+    background: linear-gradient(to right, #070b28, #070b28) no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 0%;
+    transition: background-size cubic-bezier(0.1, 0.5, 0.5, 1) 0.5s;
+
+    border-bottom: 1px solid #2f2b28;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+  }
+
+  span {
+    display: flex;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color_blue);
+    color: var(--color_white);
+    font-size: 2.25rem;
+
+    clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+    transform-origin: center;
+    transition: all cubic-bezier(0.1, 0.5, 0.5, 1) 0.4s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .text:hover > span {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .spline_bg {
+    grid-area: 1 / 1 / 9 / 9;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .center-icons {
+    display: flex;
+    align-items: center;
+  }
+  .content-container {
+    margin-top: 60px;
+  }
+
+  .sociale_links {
+    display: flex;
+    gap: 12px;
+  }
+  .sociale_links a {
+    background-color: var(--bg_color);
+    border-radius: 50px;
+    width: 40px;
+    height: auto;
+    font-size: var(--font_size_medium);
+  }
+  .sociale_links a:hover {
+    background-color: var(--color_blue);
+  }
+
+  .navigation {
+    z-index: 1;
+  }
+
+  .about {
+    height: 100vh;
+    width: 100%;
+    background: url();
+    background-position: top;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-content h4 {
+    font-size: 1.6rem;
+  }
+
+  .about-content h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin: 20px 0px 20px;
+    line-height: 1.2;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+
+  .div1 {
+    grid-area: 2 / 1 / 6 / 4;
+  }
+  .div2 {
+    grid-area: 1 / 4 / 6 / 6;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1024px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const textElements = gsap.utils.toArray(".text");
+
+  textElements.forEach((text) => {
+    gsap.to(text, {
+      backgroundSize: "100%",
+      ease: "none",
+      scrollTrigger: {
+        trigger: text,
+        start: "center 90%",
+        end: "center 50%",
+        scrub: true,
+      },
+    });
+  });
+</script>
+
+<!-- <script src="https://unpkg.com/scrollreveal"></script>
+<script>
+  window.addEventListener("load", () => {
+    const sr = ScrollReveal({
+      distance: "160px",
+      duration: 1600,
+      easing: "ease-out",
+      viewFactor: 0.5, // Adjust this value to control when the animation triggers
+    });
+
+    sr.reveal(".billede_indhold2, .tekst_indhold1, .citat_billede1", { delay: 110, origin: "left" });
+    sr.reveal(".citat, .timer_effekt", { delay: 110, origin: "top" });
+    sr.reveal(".tekst_indhold2, .tekst_indhold2, .citat_billede2", { delay: 110, origin: "right" });
+  }); -->

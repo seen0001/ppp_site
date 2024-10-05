@@ -1,0 +1,192 @@
+---
+import "../styles/style.css";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Cases">
+  <div class="center-container">
+    <div class="container">
+      <nav class="menu">
+        <div class="menu__item">
+          <div class="menu__item-image_wrapper">
+            <div class="menu__item-image_inner">
+              <img class="menu__item-image" src="https://ester-profil.netlify.app/images/barselona.avif" />
+            </div>
+          </div>
+          <span class="menu__item-text"><span class="menu__item-innertext">Barselona</span></span>
+        </div>
+        <div class="menu__item">
+          <div class="menu__item-image_wrapper">
+            <div class="menu__item-image_inner">
+              <img class="menu__item-image" src="https://ester-profil.netlify.app/images/girl-talk.avif" />
+            </div>
+          </div>
+          <span class="menu__item-text"><span class="menu__item-innertext">Girl Talk</span></span>
+        </div>
+        <div class="menu__item">
+          <div class="menu__item-image_wrapper">
+            <div class="menu__item-image_inner">
+              <img class="menu__item-image" src="https://ester-profil.netlify.app/images/cph-light.avif" />
+            </div>
+          </div>
+          <span class="menu__item-text"><span class="menu__item-innertext">CPH Light Festival</span></span>
+        </div>
+        <div class="menu__item">
+          <div class="menu__item-image_wrapper">
+            <div class="menu__item-image_inner">
+              <img class="menu__item-image" src="assets/img_04.png" />
+            </div>
+          </div>
+          <span class="menu__item-text"><span class="menu__item-innertext">Vild Mad</span></span>
+        </div>
+        <div class="menu__item">
+          <div class="menu__item-image_wrapper">
+            <div class="menu__item-image_inner">
+              <img class="menu__item-image" src="assets/img_05.jpeg" />
+            </div>
+          </div>
+          <span class="menu__item-text"><span class="menu__item-innertext">Mette's Mink Mission</span></span>
+        </div>
+      </nav>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .center-container {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .menu {
+    margin-inline: 10%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+  }
+
+  .menu__item {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu__item-image_wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .menu__item-image_inner .menu__item-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .menu__item-text {
+    position: relative;
+    font-family: var(--font_header);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 4.6rem;
+    line-height: 1;
+    color: var(--text-color);
+    opacity: 1;
+    transition: opacity 350ms ease;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    /* text-align: center; */
+  }
+
+  .menu__item:hover .menu__item-text {
+    color: #5364ffd2;
+  }
+
+  .menu__item:hover .menu__item-image_wrapper {
+    z-index: -2;
+  }
+
+  .menu__item-innertext {
+    text-align: center; /* Centerer teksten her også */
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  gsap
+    .timeline()
+    .set(".menu", { autoAlpha: 1 })
+    .from(".menu__item-innertext", {
+      delay: 1,
+      duration: 0.85,
+      xPercent: 25,
+      yPercent: 125,
+      stagger: 0.095,
+      skewY: gsap.utils.wrap([-8, 8]),
+      ease: "expo.out",
+    })
+    .set(".menu", { pointerEvents: "all" });
+
+  gsap.defaults({
+    duration: 0.55,
+    ease: "expo.out",
+  });
+
+  const menuItems = document.querySelectorAll(".menu__item");
+
+  menuItems.forEach((item) => {
+    const imageWrapper = item.querySelector(".menu__item-image_wrapper");
+    const imageWrapperBounds = imageWrapper.getBoundingClientRect();
+    let itemBounds = item.getBoundingClientRect();
+
+    const onMouseEnter = () => {
+      gsap.set(imageWrapper, {
+        scale: 0.8,
+        xPercent: 25,
+        yPercent: 50,
+        rotation: -15,
+      });
+      gsap.to(imageWrapper, { opacity: 1, scale: 1, yPercent: 0, rotation: 0 });
+    };
+
+    const onMouseLeave = () => {
+      gsap.to(imageWrapper, {
+        opacity: 0,
+        yPercent: -50,
+        xPercent: 25,
+        scale: 0.8,
+        rotation: -15,
+      });
+    };
+
+    const onMouseMove = ({ x, y }) => {
+      let yOffset = itemBounds.top / imageWrapperBounds.height;
+      yOffset = gsap.utils.mapRange(0, 1.5, -150, 150, yOffset);
+      gsap.to(imageWrapper, {
+        duration: 1.25,
+        x: Math.abs(x - itemBounds.left) - imageWrapperBounds.width / 1.55,
+        y: Math.abs(y - itemBounds.top) - imageWrapperBounds.height / 2 - yOffset,
+      });
+    };
+
+    item.addEventListener("mouseenter", onMouseEnter);
+    item.addEventListener("mouseleave", onMouseLeave);
+    item.addEventListener("mousemove", onMouseMove);
+
+    window.addEventListener("resize", () => {
+      itemBounds = item.getBoundingClientRect();
+    });
+  });
+</script>

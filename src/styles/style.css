@@ -1,0 +1,73 @@
+/*************** Reset *********************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font_speciel: "Darker Grotesque", sans-serif;
+  --font_header: "DM Sans", sans-serif;
+
+  --font_size_large: 1.55rem;
+  --font_size_medium: 1.35rem;
+  --font_size_regular: 1rem;
+  --font_size_small: 0.875rem;
+  --font_size_tiny: 0.75rem;
+
+  --bg_color: #ddebf2;
+  --button_bg: transparent;
+  --color_white: #ffffff;
+  --color_lightgrey: #a5a5a5;
+  /* --color_blue: #22d1f4; */
+  --color_blue: linear-gradient(120deg, #3b6fff, #5298ff);
+  --color_text: #070b28;
+}
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  font-family: var(--font_header);
+}
+
+p,
+a,
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color_text);
+}
+
+main {
+  max-width: 1600px;
+  margin: auto;
+}
+
+body {
+  list-style: none;
+  background-color: var(--color_black);
+}
+
+hr {
+  border-width: 0.1px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ___________________________ TABLET  ___________________________*/
+/* reglerne gælder når skærmen er minimum 768px */
+@media screen and (min-width: 768px) {
+}
+
+/* ___________________________ DESKTOP  ___________________________*/
+@media screen and (min-width: 1024px) {
+}

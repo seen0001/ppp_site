@@ -1,0 +1,50 @@
+---
+import "../styles/style.css";
+import MainLayout from "../layouts/MainLayout.astro";
+import Mail from "../components/Mail.astro";
+---
+
+<MainLayout title="Kontakt Sebastian E.">
+  <section class="content">
+    <div class="mails">
+      <div class="mails_grid">
+        <h1>Get in touch!</h1>
+        <Mail overskrift="Info" link="mailto:sebastian.engelbreth@outlook.dk?"> sebastian.engelbreth@outlook.dk</Mail>
+      </div>
+      <div class="billede">
+        <img src="" alt="??" />
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .mails {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 80px;
+    margin-bottom: 125px;
+  }
+  .content {
+    padding-top: 8%;
+  }
+  h1 {
+    padding-bottom: 44px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .mails {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .mails {
+      padding-top: 125px;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
