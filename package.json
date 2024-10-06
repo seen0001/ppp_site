@@ -10,10 +10,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^3.6.2",
     "astro": "^4.8.4",
+    "framer-motion": "^11.11.1",
     "gsap": "^3.12.5",
+    "lenis": "^1.1.13",
     "split-text-js": "^1.0.3",
     "splitting": "^1.0.6",
     "typed.js": "^2.1.0"
+  },
+  "devDependencies": {
+    "sass": "^1.79.4"
   }
 }

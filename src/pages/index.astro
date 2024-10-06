@@ -1,29 +1,31 @@
 ---
+// index.astro
 import "../styles/style.css";
+import Preloader from "../components/Preloader.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Button from "../components/Button.astro";
 import TextKasse from "../components/TextKasse.astro";
 ---
 
 <MainLayout title="Web by Sebastian Elias.">
-  <div id="overlay"></div>
+  <Preloader />
   <main>
     <article class="hero">
       <div class="spline_bg">
         <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/8zOTxRw8KJlFmp3y/scene.splinecode"></spline-viewer>
+        <spline-viewer url="https://prod.spline.design/xVSRqW6JGiwDBWAW/scene.splinecode"></spline-viewer>
       </div>
       <div class="hero_text">
         <h1>Helping brands to stand out in the digital era.</h1>
         <p>Together we build the blocks of your vision - no nonsense, just bold digital solutions that make your brand stand out.</p>
         <div>
-          <Button style="primary" linket="https://example.com">Contact me</Button>
-          <Button style="secondary" linket="https://example.com">Download CV</Button>
+          <Button style="primary" linket="/contact">Contact me</Button>
+          <Button style="secondary" linket="/files/resume.pdf">Download CV</Button>
         </div>
       </div>
     </article>
 
-    <TextKasse h2="Hey," image="/images/cv-photo.png" image_alt="Billede af Sebastian Engelbreth">
+    <TextKasse h2="Hey," image="/images/cv-photo.avif" image_alt="Billede af Sebastian Engelbreth">
       <div class="kasse-text">
         <h1>I'm <span class="input"></span></h1>
         <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
@@ -44,20 +46,44 @@ import TextKasse from "../components/TextKasse.astro";
 
     <span class="button-line"></span>
   </main>
-
-  <script>
-    import Typed from "typed.js";
-
-    const typed = new Typed(".input", {
-      strings: ["Sebastian Engelbreth", "Web Developer", "UI/UX Designer"],
-      typeSpeed: 70,
-      backSpeed: 65,
-      loop: true,
-    });
-  </script>
 </MainLayout>
 
+<script>
+  import Typed from "typed.js";
+
+  const typed = new Typed(".input", {
+    strings: ["Sebastian Engelbreth", "Web Developer", "UI/UX Designer"],
+    typeSpeed: 70,
+    backSpeed: 65,
+    loop: true,
+  });
+</script>
+
 <style>
+  /* Preloader styles */
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); /* Baggrundsfarve */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease; /* Glidende overgang */
+  }
+
+  .hidden {
+    opacity: 0;
+    pointer-events: none; /* Forhindrer interaktion, når den er skjult */
+  }
+
+  .visible {
+    opacity: 1; /* Gør preloaderen synlig */
+  }
+
   .hero {
     height: 100vh;
     display: grid;
@@ -142,7 +168,7 @@ import TextKasse from "../components/TextKasse.astro";
     height: 100vh;
     left: 0;
     top: 0;
-    width: 100%;
+    width: auto;
   }
   .center-icons {
     display: flex;
@@ -209,7 +235,7 @@ import TextKasse from "../components/TextKasse.astro";
   }
 
   h1 {
-    font-size: 4rem;
+    font-size: 4cqw;
   }
 
   @media screen and (min-width: 768px) {
@@ -243,19 +269,18 @@ import TextKasse from "../components/TextKasse.astro";
       },
     });
   });
-</script>
 
-<!-- <script src="https://unpkg.com/scrollreveal"></script>
-<script>
-  window.addEventListener("load", () => {
-    const sr = ScrollReveal({
-      distance: "160px",
-      duration: 1600,
-      easing: "ease-out",
-      viewFactor: 0.5, // Adjust this value to control when the animation triggers
+  const sectionElement = gsap.utils.toArray(".tekst_indhold1, .tekst_indhold2");
+  sectionElement.forEach((element) => {
+    gsap.to(element, {
+      opacity: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: element,
+        start: "top 100%",
+        end: "top 40%",
+        scrub: 0.4,
+      },
     });
-
-    sr.reveal(".billede_indhold2, .tekst_indhold1, .citat_billede1", { delay: 110, origin: "left" });
-    sr.reveal(".citat, .timer_effekt", { delay: 110, origin: "top" });
-    sr.reveal(".tekst_indhold2, .tekst_indhold2, .citat_billede2", { delay: 110, origin: "right" });
-  }); -->
+  });
+</script>

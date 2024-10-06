@@ -1,0 +1,72 @@
+---
+import "../styles/style.css";
+let currentGreetingIndex = 0;
+---
+
+<style>
+  /* Preloader stil */
+  #preloader {
+    font-family: var(--font_speciel);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Dækker hele skærmen */
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    z-index: 1000; /* Sørger for, at det er over alt andet */
+    border-radius: 0; /* Ingen runding ved start */
+    transition:
+      border-radius 0.8s ease,
+      transform 0.8s ease; /* Glat overgang for både runding og slide up */
+    font-weight: 500;
+  }
+
+  /* Slide up effekt med runding */
+  #preloader.slide-up {
+    transform: translateY(-100%); /* Slide up effekt */
+    border-radius: 0 0 100% 100%; /* Rundede hjørner ved slide up */
+  }
+
+  #preloader p {
+    color: white;
+  }
+</style>
+
+<div id="preloader">
+  <p id="greeting">Hej</p>
+</div>
+
+<script>
+  const greetings = [
+    "Hej", // Danish
+    "Hello", // English
+    "Hola", // Spanish
+    "Salut", // French
+    "Ciao", // Italian
+    "Привет", // Russian
+    "안녕하세요", // Korean
+    "こんにちは", // Japanese
+    "你好", // Chinese
+    "Code by <span style='color: #5364ffd2; font-weight: bolder;'>Sebastian E.</span>", // Indkapslet i span med inline styling
+  ];
+  let greetingElement = document.getElementById("greeting");
+  let currentIndex = 0;
+
+  function changeGreeting() {
+    if (currentIndex < greetings.length - 1) {
+      currentIndex++;
+      greetingElement.innerHTML = greetings[currentIndex]; // Brug innerHTML for at indlæse HTML
+    } else {
+      clearInterval(greetingInterval); // Stop skift efter "Hello"
+      setTimeout(() => {
+        document.getElementById("preloader").classList.add("slide-up"); // Start slide up
+      }, 1000); // Vent i 2 sekunder ved "Code by Sebastian E."
+    }
+  }
+
+  const greetingInterval = setInterval(changeGreeting, 200); // Skift hilsen hver 0,25 sekunder
+</script>

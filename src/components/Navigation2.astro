@@ -4,14 +4,14 @@ import "../styles/style.css";
 
 <header>
   <div class="logo">
-    <a href="/">Web by <span>Sebastian E.</span></a>
+    <a href="/">Code by <span>Sebastian E.</span></a>
   </div>
 
   <nav>
     <ul class="menu">
       <li><a href="/cases">Cases</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/9_kontakt">Contact</a></li>
+      <li><a href="/contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -19,8 +19,8 @@ import "../styles/style.css";
     <span class="burger-icon">
       <div class="line"></div>
       <div class="line"></div>
-      <div class="line"></div>
     </span>
+    <span></span>
     <span class="burger-text">Menu</span>
   </div>
 </header>
@@ -50,10 +50,6 @@ import "../styles/style.css";
   .logo.hide {
     opacity: 0;
     transform: translateY(-20px);
-  }
-
-  span {
-    color: #5364ffd2;
   }
 
   nav {
@@ -125,49 +121,38 @@ import "../styles/style.css";
   }
 
   .burger .line {
-    width: 100%;
-    height: 2px;
-    background-color: var(--color_text);
-    margin-bottom: 5px;
+    width: 20px; /* Justér bredden af linjerne */
+    height: 2.5px;
+    background-color: var(--color_white); /* Farven på linjerne */
+    margin-top: 2px; /* Afstand mellem linjerne */
+    margin-bottom: 2px;
+    transition: 0.2s linear;
+    border-radius: 15%;
     transition: 0.2s linear;
   }
 
   .burger {
+    font-size: 22px;
     background: var(--color_blue);
-    width: 30px;
-    height: 20px;
     cursor: pointer;
     display: none;
-  }
-  .burger {
-    background-color: var(--color_blue); /* Baggrundsfarve */
+    color: var(--color_white);
     display: flex; /* Flex for at få ikonet og teksten side om side */
     align-items: center; /* Centrér indholdet lodret */
     justify-content: center; /* Centrér indholdet horisontalt */
-    padding: 10px 20px; /* Indre afstand omkring ikonet og teksten */
+    padding-inline: 2rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem; /* Indre afstand omkring ikonet og teksten */
     border-radius: 50px; /* Rundede hjørner */
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 500;
   }
 
   .burger-icon {
     display: flex;
     flex-direction: column;
     margin-right: 10px; /* Afstand mellem ikonet og teksten */
-  }
-
-  .burger .line {
-    width: 20px; /* Justér bredden af linjerne */
-    height: 2px;
-    background-color: var(--color_text); /* Farven på linjerne */
-    margin-bottom: 4px; /* Afstand mellem linjerne */
-    transition: 0.2s linear;
-  }
-
-  .burger-text {
-    color: var(--color_text); /* Farven på teksten */
-    font-size: 16px; /* Tekststørrelse */
-    font-weight: bold; /* Fed tekst */
   }
 
   nav.scrolled .menu {
