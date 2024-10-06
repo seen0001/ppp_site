@@ -28,11 +28,13 @@ import TextKasse from "../components/TextKasse.astro";
     <TextKasse h2="Hey," image="/images/cv-photo.avif" image_alt="Billede af Sebastian Engelbreth">
       <div class="kasse-text">
         <h1>I'm <span class="input"></span></h1>
-        <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
-        <p>
-          <br />
-          I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
-        </p>
+        <div class="kasse-text-p">
+          <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
+          <p>
+            <br />
+            I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
+          </p>
+        </div>
       </div>
     </TextKasse>
 
@@ -60,6 +62,9 @@ import TextKasse from "../components/TextKasse.astro";
 </script>
 
 <style>
+  .kasse-text-p {
+    margin-top: 25px;
+  }
   /* Preloader styles */
   #preloader {
     position: fixed;
