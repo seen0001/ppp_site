@@ -5,6 +5,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 <MainLayout title="Cases">
   <div class="cases-container">
+    <div class="cases-text">
+      <h1>Former Cases</h1>
+      <p class="top-text">Here is a small selection of the projects I have previously worked on.</p>
+    </div>
     <div class="menu__item">
       <div class="menu__item-image_wrapper">
         <div class="menu__item-image_inner">
@@ -82,6 +86,21 @@ import MainLayout from "../layouts/MainLayout.astro";
   .cases-container {
     padding-top: 12%;
   }
+
+  .cases-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 80px;
+    gap: 40px;
+  }
+  .cases-text p {
+    font-size: 1.6rem;
+  }
+
+  .cases-text h1 {
+    font-size: 4cqw;
+  }
   .divider {
     width: 100%;
     height: 1px;
@@ -139,7 +158,6 @@ import MainLayout from "../layouts/MainLayout.astro";
     white-space: nowrap;
     overflow: hidden;
     cursor: pointer;
-    /* text-align: center; */
   }
 
   .menu__item:hover .menu__item-text {
@@ -151,13 +169,14 @@ import MainLayout from "../layouts/MainLayout.astro";
   }
 
   .menu__item-innertext {
-    text-align: center; /* Centerer teksten her også */
+    text-align: center;
   }
 </style>
 
 <script>
   import { gsap } from "gsap";
 
+  // Initial animations for menu text
   gsap
     .timeline()
     .set(".menu", { autoAlpha: 1 })
@@ -172,11 +191,28 @@ import MainLayout from "../layouts/MainLayout.astro";
     })
     .set(".menu", { pointerEvents: "all" });
 
-  gsap.defaults({
-    duration: 0.55,
-    ease: "expo.out",
+  // Divider animation - juster transformOrigin
+  gsap.from(".divider", 3, {
+    scaleX: 0,
+    ease: "power3.inOut",
+    delay: 0,
+    stagger: {
+      amount: 1,
+    },
   });
 
+  // Text (column) animation
+  gsap.from(".flex-text", 2, {
+    opacity: 0,
+    y: 40,
+    ease: "power3.inOut",
+    delay: 2,
+    stagger: {
+      amount: 1.5,
+    },
+  });
+
+  // Image hover animations
   const menuItems = document.querySelectorAll(".menu__item");
 
   menuItems.forEach((item) => {
@@ -188,7 +224,7 @@ import MainLayout from "../layouts/MainLayout.astro";
       gsap.set(imageWrapper, {
         scale: 0.8,
         xPercent: -50,
-        yPercent: 50,
+        yPercent: 70,
         rotation: -15,
       });
       gsap.to(imageWrapper, { opacity: 1, scale: 1, yPercent: 0, rotation: 0 });
@@ -197,7 +233,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     const onMouseLeave = () => {
       gsap.to(imageWrapper, {
         opacity: 0,
-        yPercent: -50,
+        yPercent: -70,
         xPercent: -50,
         scale: 0.8,
         rotation: -15,
@@ -206,7 +242,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
     const onMouseMove = ({ x, y }) => {
       let yOffset = itemBounds.top / imageWrapperBounds.height;
-      yOffset = gsap.utils.mapRange(0, 1.5, -150, 150, yOffset);
+      yOffset = gsap.utils.mapRange(0, 1.5, -50, 50, yOffset);
       gsap.to(imageWrapper, {
         duration: 1.25,
         x: Math.abs(x - itemBounds.left) - imageWrapperBounds.width / 1.4,
