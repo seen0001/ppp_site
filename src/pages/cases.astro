@@ -4,88 +4,122 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Cases">
-  <div class="center-container">
-    <div class="container">
-      <nav class="menu">
-        <div class="menu__item">
-          <div class="menu__item-image_wrapper">
-            <div class="menu__item-image_inner">
-              <img class="menu__item-image" src="https://ester-profil.netlify.app/images/barselona.avif" />
-            </div>
-          </div>
-          <span class="menu__item-text"><span class="menu__item-innertext">Barselona</span></span>
+  <div class="cases-container">
+    <div class="menu__item">
+      <div class="menu__item-image_wrapper">
+        <div class="menu__item-image_inner">
+          <img class="menu__item-image" src="https://ester-profil.netlify.app/images/barselona.avif" />
         </div>
-        <div class="menu__item">
-          <div class="menu__item-image_wrapper">
-            <div class="menu__item-image_inner">
-              <img class="menu__item-image" src="https://ester-profil.netlify.app/images/girl-talk.avif" />
-            </div>
-          </div>
-          <span class="menu__item-text"><span class="menu__item-innertext">Girl Talk</span></span>
+      </div>
+      <div class="text-container">
+        <div class="divider"></div>
+        <div class="flex-text">
+          <h2 class="menu__item-text"><span class="menu__item-innertext">Barselona</span></h2>
+          <p>My 2nd semester exam project involved creating a completely reimagined website for the band Barselona.</p>
         </div>
-        <div class="menu__item">
-          <div class="menu__item-image_wrapper">
-            <div class="menu__item-image_inner">
-              <img class="menu__item-image" src="https://ester-profil.netlify.app/images/cph-light.avif" />
-            </div>
-          </div>
-          <span class="menu__item-text"><span class="menu__item-innertext">CPH Light Festival</span></span>
+      </div>
+    </div>
+    <div class="menu__item">
+      <div class="menu__item-image_wrapper">
+        <div class="menu__item-image_inner">
+          <img class="menu__item-image" src="https://ester-profil.netlify.app/images/girl-talk.avif" />
         </div>
-        <div class="menu__item">
-          <div class="menu__item-image_wrapper">
-            <div class="menu__item-image_inner">
-              <img class="menu__item-image" src="/images/forest-flavours.avif" />
-            </div>
-          </div>
-          <span class="menu__item-text"><span class="menu__item-innertext">Vild Mad</span></span>
+      </div>
+      <div class="text-container">
+        <div class="divider"></div>
+        <div class="flex-text">
+          <h2 class="menu__item-text"><span class="menu__item-innertext">Girl Talk</span></h2>
+          <p>A one-pager for Girl Talk, showcasing their parental counseling service.</p>
         </div>
-        <div class="menu__item">
-          <div class="menu__item-image_wrapper">
-            <div class="menu__item-image_inner">
-              <img class="menu__item-image" src="/images/mette-mink.avif" />
-            </div>
-          </div>
-          <span class="menu__item-text"><span class="menu__item-innertext">Mette's Mink Mission</span></span>
+      </div>
+    </div>
+    <div class="menu__item">
+      <div class="menu__item-image_wrapper">
+        <div class="menu__item-image_inner">
+          <img class="menu__item-image" src="https://ester-profil.netlify.app/images/cph-light.avif" />
         </div>
-      </nav>
+      </div>
+      <div class="text-container">
+        <div class="divider"></div>
+        <div class="flex-text">
+          <h2 class="menu__item-text"><span class="menu__item-innertext">CPH Light Festival</span></h2>
+          <p>Redesigned the website for Copenhagen Light Festival with a fresh approach.</p>
+        </div>
+      </div>
+    </div>
+    <div class="menu__item">
+      <div class="menu__item-image_wrapper">
+        <div class="menu__item-image_inner">
+          <img class="menu__item-image" src="/images/forest-flavours.avif" />
+        </div>
+      </div>
+      <div class="text-container">
+        <div class="divider"></div>
+        <div class="flex-text">
+          <h2 class="menu__item-text"><span class="menu__item-innertext">Vild Mad</span></h2>
+          <p>A themed website for Supertusch, designed to educate 7th-grade students about foraging.</p>
+        </div>
+      </div>
+    </div>
+    <div class="menu__item">
+      <div class="menu__item-image_wrapper">
+        <div class="menu__item-image_inner">
+          <img class="menu__item-image" src="/images/mette-mink.avif" />
+        </div>
+      </div>
+      <div class="text-container">
+        <div class="divider"></div>
+        <div class="flex-text">
+          <h2 class="menu__item-text"><span class="menu__item-innertext">Mette's Mink Mission</span></h2>
+          <p>An interactive animated game exclusively designed and programmed by me.</p>
+        </div>
+      </div>
     </div>
   </div>
 </MainLayout>
 
 <style>
-  .center-container {
+  .cases-container {
+    padding-top: 12%;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 0.2em 0;
+    background: black;
+  }
+  .flex-text {
+    height: 80px;
     display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
     align-items: center;
-    height: 100vh;
   }
 
+  .flex-text p {
+    max-width: 350px;
+  }
   .menu {
-    margin-inline: 10%;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
   }
 
   .menu__item {
-    width: max-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 
   .menu__item-image_wrapper {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 400px;
+    width: 500px;
+    height: 250px;
     pointer-events: none;
     opacity: 0;
   }
 
   .menu__item-image_inner .menu__item-image {
-    position: absolute;
     left: 0;
     top: 0;
     height: 100%;
@@ -94,11 +128,10 @@ import MainLayout from "../layouts/MainLayout.astro";
   }
 
   .menu__item-text {
-    position: relative;
     font-family: var(--font_header);
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 4.6rem;
+    font-size: 2.2rem;
     line-height: 1;
     color: var(--text-color);
     opacity: 1;
@@ -154,7 +187,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     const onMouseEnter = () => {
       gsap.set(imageWrapper, {
         scale: 0.8,
-        xPercent: 25,
+        xPercent: -50,
         yPercent: 50,
         rotation: -15,
       });
@@ -165,7 +198,7 @@ import MainLayout from "../layouts/MainLayout.astro";
       gsap.to(imageWrapper, {
         opacity: 0,
         yPercent: -50,
-        xPercent: 25,
+        xPercent: -50,
         scale: 0.8,
         rotation: -15,
       });
@@ -176,8 +209,8 @@ import MainLayout from "../layouts/MainLayout.astro";
       yOffset = gsap.utils.mapRange(0, 1.5, -150, 150, yOffset);
       gsap.to(imageWrapper, {
         duration: 1.25,
-        x: Math.abs(x - itemBounds.left) - imageWrapperBounds.width / 1.55,
-        y: Math.abs(y - itemBounds.top) - imageWrapperBounds.height / 2 - yOffset,
+        x: Math.abs(x - itemBounds.left) - imageWrapperBounds.width / 1.4,
+        y: Math.abs(y - itemBounds.top) - imageWrapperBounds.height / 5 - yOffset,
       });
     };
 
