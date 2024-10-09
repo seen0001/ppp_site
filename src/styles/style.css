@@ -15,13 +15,20 @@
   --font_size_small: 0.875rem;
   --font_size_tiny: 0.75rem;
 
-  --bg_color: #ddebf2;
+  --bg_color: #ffffff;
   --button_bg: transparent;
   --color_white: #ffffff;
   --color_lightgrey: #a5a5a5;
   /* --color_blue: #22d1f4; */
-  --color_blue: linear-gradient(120deg, #3b6fff, #5298ff);
-  --color_text: #070b28;
+  --color_blue: #0085ff;
+  --secondary_blue: #006fff;
+  --header_color: #0085ff;
+  --color_text: #1c1d20;
+
+  --colortransition: 800ms;
+  --easing: ease;
+
+  --radius-circle: 50vw;
 }
 img {
   width: 100%;
@@ -32,16 +39,16 @@ img {
 
 html,
 body {
-  scroll-behavior: smooth;
   font-family: var(--font_header);
+  background-color: var(--bg_color);
+}
+
+h1 {
+  color: var(--header_color);
 }
 
 p,
-a,
-h1,
-h2,
-h3,
-h4 {
+a {
   color: var(--color_text);
 }
 

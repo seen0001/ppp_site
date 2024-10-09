@@ -10,43 +10,48 @@ import TextKasse from "../components/TextKasse.astro";
 <MainLayout title="Web by Sebastian Elias.">
   <Preloader />
   <main>
-    <article class="hero">
-      <div class="spline_bg">
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/xVSRqW6JGiwDBWAW/scene.splinecode"></spline-viewer>
-      </div>
-      <div class="hero_text">
-        <h1>Helping brands to stand out in the digital era.</h1>
-        <p>Together we build the blocks of your vision - no nonsense, just bold digital solutions that make your brand stand out.</p>
-        <div>
-          <Button style="primary" linket="/contact">Contact me</Button>
-          <Button style="secondary" linket="/files/resume.pdf">Download CV</Button>
+    <div class="scrollbar-container">
+      <section class="parallax-background-section">
+        <div class="parallax-background-element pbe-1">
+          <article class="hero">
+            <div class="spline_bg">
+              <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.29/build/spline-viewer.js"></script>
+              <spline-viewer url="https://prod.spline.design/xVSRqW6JGiwDBWAW/scene.splinecode"></spline-viewer>
+            </div>
+            <div class="hero_text">
+              <h1>Helping brands to stand out in the digital era.</h1>
+              <p>Together we build the blocks of your vision - no nonsense, just bold digital solutions that make your brand stand out.</p>
+              <div>
+                <Button style="primary" linket="/contact">Contact me</Button>
+                <Button style="secondary" linket="/files/resume.pdf">Download CV</Button>
+              </div>
+            </div>
+          </article>
         </div>
-      </div>
-    </article>
+      </section>
 
-    <TextKasse h2="Hey," image="/images/cv-photo.avif" image_alt="Billede af Sebastian Engelbreth">
-      <div class="kasse-text">
-        <h1>I'm <span class="input"></span></h1>
-        <div class="kasse-text-p">
-          <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
-          <p>
-            <br />
-            I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
-          </p>
+      <TextKasse h2="Hey," image="/images/cv-photo.avif" image_alt="Billede af Sebastian Engelbreth">
+        <div class="kasse-text">
+          <h2>I'm <span class="input"></span></h2>
+          <div class="kasse-text-p">
+            <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
+            <p>
+              <br />
+              I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
+            </p>
+          </div>
         </div>
-      </div>
-    </TextKasse>
-
+      </TextKasse>
+    </div>
     <div class="container">
-      <h2 class="text">Frontend Code<span>HTML, CSS, JavaScript, Astro, React & Next.js</span></h2>
-      <h2 class="text">UX/UI<span>Figma, Adobe CC & Spline</span></h2>
-      <h2 class="text">Audio<span>Ableton</span></h2>
-      <h2 class="text">Teamwork<span>GitHub, Trello, Scrum etc.</span></h2>
-      <h2 class="text">Practical Tools<span>Microsoft 365 (Excel, Word, Powerpoint)</span></h2>
+      <h2 class="text">Frontend Code<span class="text-behind">HTML, CSS, JavaScript, Astro, React & Next.js</span></h2>
+      <h2 class="text">UX/UI<span class="text-behind">Figma, Adobe CC & Spline</span></h2>
+      <h2 class="text">Audio<span class="text-behind">Ableton</span></h2>
+      <h2 class="text">Teamwork<span class="text-behind">GitHub, Trello, Scrum etc.</span></h2>
+      <h2 class="text">Practical Tools<span class="text-behind">Microsoft 365 (Excel, Word, Powerpoint)</span></h2>
     </div>
 
-    <span class="button-line"></span>
+    <!-- <span class="button-line"></span> -->
   </main>
 </MainLayout>
 
@@ -62,6 +67,28 @@ import TextKasse from "../components/TextKasse.astro";
 </script>
 
 <style>
+  section.parallax-background-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .parallax-background-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .kasse-text h2 {
+    font-size: 3rem;
+  }
+
+  .input {
+    color: var(--color_blue);
+  }
   .kasse-text-p {
     margin-top: 25px;
   }
@@ -105,6 +132,10 @@ import TextKasse from "../components/TextKasse.astro";
     flex-direction: column;
     gap: 20px;
   }
+
+  .hero_text h1 {
+    line-height: 4.4rem;
+  }
   p {
     font-size: var(--font_size_large);
   }
@@ -125,7 +156,7 @@ import TextKasse from "../components/TextKasse.astro";
     line-height: 100%;
     width: 100%;
     color: rgb(182, 182, 182, 0.2);
-    background: linear-gradient(to right, #070b28, #070b28) no-repeat;
+    background: linear-gradient(to right, var(--color_text), var(--color_text)) no-repeat;
     -webkit-background-clip: text;
     background-clip: text;
     background-size: 0%;
@@ -140,7 +171,7 @@ import TextKasse from "../components/TextKasse.astro";
     position: relative;
   }
 
-  span {
+  .text-behind {
     display: flex;
     text-align: center;
     position: absolute;
@@ -255,13 +286,34 @@ import TextKasse from "../components/TextKasse.astro";
 
 <script>
   import { gsap } from "gsap";
-
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import Lenis from "lenis";
 
+  // Register ScrollTrigger plugin
   gsap.registerPlugin(ScrollTrigger);
 
-  const textElements = gsap.utils.toArray(".text");
+  // Initialize a new Lenis instance for smooth scrolling
+  const lenis = new Lenis();
 
+  // Listen for the 'scroll' event and log the event data to the console
+  lenis.on("scroll", (e) => {
+    console.log(e);
+  });
+
+  // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
+  lenis.on("scroll", ScrollTrigger.update);
+
+  // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
+  // This ensures Lenis's smooth scroll animation updates on each GSAP tick
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+  });
+
+  // Disable lag smoothing in GSAP to prevent any delay in scroll animations
+  gsap.ticker.lagSmoothing(0);
+
+  // GSAP animations for text elements
+  const textElements = gsap.utils.toArray(".text");
   textElements.forEach((text) => {
     gsap.to(text, {
       backgroundSize: "100%",
@@ -275,8 +327,9 @@ import TextKasse from "../components/TextKasse.astro";
     });
   });
 
-  const sectionElement = gsap.utils.toArray(".tekst_indhold1, .tekst_indhold2");
-  sectionElement.forEach((element) => {
+  // GSAP animations for section elements
+  const sectionElements = gsap.utils.toArray(".tekst_indhold1, .tekst_indhold2");
+  sectionElements.forEach((element) => {
     gsap.to(element, {
       opacity: 1,
       ease: "none",
@@ -287,5 +340,45 @@ import TextKasse from "../components/TextKasse.astro";
         scrub: 0.4,
       },
     });
+  });
+
+  // Parallax
+
+  gsap.utils.toArray(".parallax-background-section").forEach((section: HTMLElement, i: number) => {
+    // TypeScript: Ensure section.bg is properly typed and querySelector is handled safely
+    const bg = section.querySelector(".parallax-background-element") as HTMLElement | null;
+
+    if (bg) {
+      // Indstil den indledende baggrundsposition
+      bg.style.backgroundPosition = "50% 0px";
+
+      gsap.to(bg, {
+        backgroundPosition: `50% ${-innerHeight / 2}px`,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          scrub: true,
+          onUpdate: function (self) {
+            gsap.set(bg, { top: self.scroll() - (bg.parentElement?.offsetTop || 0) });
+          },
+        },
+      });
+    } else {
+      bg.style.backgroundPosition = "50% 0px";
+
+      gsap.to(bg, {
+        backgroundPosition: `50% ${-innerHeight / 2}px`,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "top 50%",
+          scrub: true,
+          onUpdate: function (self) {
+            gsap.set(bg, { top: self.scroll() - (bg.parentElement?.offsetTop || 0) });
+          },
+        },
+      });
+    }
   });
 </script>

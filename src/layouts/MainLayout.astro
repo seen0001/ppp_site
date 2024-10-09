@@ -25,14 +25,13 @@ const { title } = Astro.props;
     <meta name="robots" content="noindex, nofollow" />
 
     <!-- fa-icon -->
-    <link rel="icon" type="image/svg+xml" href="" />
+    <link rel="icon" type="image/svg+xml" href="/iconer2/logo.svg" />
 
     <!-- Roboto font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
 
     <!-- Sætter generator meta tag til at angive hvilken værktøj der blev brugt til at generere siden -->
@@ -45,16 +44,19 @@ const { title } = Astro.props;
     <div class="circle"></div>
 
     <Navigation2 />
-    <main>
-      <slot />
-    </main>
-
+    <div>
+      <main>
+        <slot />
+      </main>
+    </div>
     <Footer />
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   </body>
   <style>
     main {
       padding-top: 0px;
+      position: relative;
+      margin-bottom: 500px;
+      z-index: 1;
     }
 
     nav {
@@ -68,7 +70,7 @@ const { title } = Astro.props;
       position: fixed;
       height: var(--circle-size);
       width: var(--circle-size);
-      border: 2px solid #5364ffd2;
+      border: 2px solid var(--color_blue);
       border-radius: 50%;
       top: calc(var(--circle-size) / 2 * -1);
       left: calc(var(--circle-size) / 2 * -1);

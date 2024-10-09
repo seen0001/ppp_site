@@ -3,45 +3,96 @@ import "../styles/style.css";
 const { style, linket } = Astro.props;
 ---
 
-<a href={linket} class={style}><slot /></a>
+<a href={linket} class={style}><span><slot /></span></a>
 
 <style>
-  a {
-    display: inline-block;
-    font-size: var(--font_size_small);
-    padding: 8px 20px;
-    cursor: pointer;
-    transition: all 0.55s ease;
-  }
-
-  a:hover {
-    transform: scale(1.04);
-  }
-
   .primary {
-    background: var(--color_blue);
-    border: 1.5px solid #5364ffd2;
-    color: var(--color_white);
-    border-radius: 60px;
-    margin-right: 10px;
-  }
-  .primary:hover {
-    background: transparent;
-    border: 1.5px solid #5364ffd2;
-    color: var(--color_text);
+    display: inline-block;
+    position: relative;
+    background: var(--color_text); /* Start baggrundsfarve */
+    border: 2px solid var(--color_text);
+    padding: 0.6em 1.8em;
+    color: white;
+    font-size: 1.2em;
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    border-radius: 60px;
+    overflow: hidden;
+    margin-top: 8px; /* Får knappen til at rykke ned */
+    margin-right: 16px;
+  }
+
+  .primary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color_blue) 0%, var(--color_blue) 100%);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1; /* Ligger under teksten */
+  }
+
+  .primary:hover::after {
+    transform: scaleX(1); /* Skalerer effekten over hele knappen */
+  }
+
+  .primary span {
+    position: relative;
+    z-index: 2; /* Sørger for, at teksten er ovenpå */
   }
 
   .secondary {
-    background: transparent;
-    border: 1.5px solid #5364ffd2;
-    color: var(--color_black);
+    display: inline-block;
+    position: relative;
+    background: transparent; /* Start baggrundsfarve */
+    border: 2px solid var(--color_text);
+    padding: 0.6em 1.8em;
+    color: var(--color_text);
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
     border-radius: 60px;
+    overflow: hidden;
+    margin-top: 8px; /* Får knappen til at rykke ned */
+  }
+
+  .secondary::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color_blue) 0%, var(--color_blue) 100%);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1; /* Ligger under teksten */
+  }
+
+  .secondary:hover::after {
+    transform: scaleX(1); /* Skalerer effekten over hele knappen */
+  }
+
+  .secondary span {
+    position: relative;
+    z-index: 2; /* Sørger for, at teksten er ovenpå */
+  }
+
+  .primary:hover {
+    border: 2px solid var(--color_blue);
   }
   .secondary:hover {
-    background: var(--color_blue);
-    color: var(--color_white);
-    text-decoration: none;
+    color: white; /* Gør teksten hvid ved hover */
+    border: 2px solid var(--color_blue);
+  }
+
+  .secondary:hover::after {
+    transform: scaleX(1); /* Skalerer effekten over hele knappen */
   }
 
   @media screen and (min-width: 768px) {

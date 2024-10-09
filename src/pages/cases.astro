@@ -4,85 +4,224 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Cases">
-  <div class="cases-container">
-    <div class="cases-text">
-      <h1>Former Cases</h1>
-      <p class="top-text">Here is a small selection of the projects I have previously worked on.</p>
-    </div>
-    <div class="menu__item">
-      <div class="menu__item-image_wrapper">
-        <div class="menu__item-image_inner">
-          <img class="menu__item-image" src="https://ester-profil.netlify.app/images/barselona.avif" />
+  <section class="works">
+    <div class="container-works">
+      <div class="content-works">
+        <div class="header-works">
+          <h3>Recent Work</h3>
         </div>
-      </div>
-      <div class="text-container">
-        <div class="divider"></div>
-        <div class="flex-text">
-          <h2 class="menu__item-text"><span class="menu__item-innertext">Barselona</span></h2>
-          <p>My 2nd semester exam project involved creating a completely reimagined website for the band Barselona.</p>
+
+        <div id="gallery-work">
+          <div id="work-images">
+            <div class="work-image" style="
+                  background-image: url('https://images.pexels.com/photos/14696910/pexels-photo-14696910.jpeg');
+                "></div>
+            <div class="work-image" style="
+                  background-image: url('https://images.pexels.com/photos/8969179/pexels-photo-8969179.jpeg');
+                "></div>
+            <div class="work-image" style="
+                  background-image: url('https://images.pexels.com/photos/16677943/pexels-photo-16677943.jpeg');
+                "></div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="menu__item">
-      <div class="menu__item-image_wrapper">
-        <div class="menu__item-image_inner">
-          <img class="menu__item-image" src="https://ester-profil.netlify.app/images/girl-talk.avif" />
-        </div>
-      </div>
-      <div class="text-container">
-        <div class="divider"></div>
-        <div class="flex-text">
-          <h2 class="menu__item-text"><span class="menu__item-innertext">Girl Talk</span></h2>
-          <p>A one-pager for Girl Talk, showcasing their parental counseling service.</p>
-        </div>
-      </div>
-    </div>
-    <div class="menu__item">
-      <div class="menu__item-image_wrapper">
-        <div class="menu__item-image_inner">
-          <img class="menu__item-image" src="https://ester-profil.netlify.app/images/cph-light.avif" />
-        </div>
-      </div>
-      <div class="text-container">
-        <div class="divider"></div>
-        <div class="flex-text">
-          <h2 class="menu__item-text"><span class="menu__item-innertext">CPH Light Festival</span></h2>
-          <p>Redesigned the website for Copenhagen Light Festival with a fresh approach.</p>
+
+        <div class="items-works">
+          <div class="grid-works">
+            <div class="item-work">
+              <div class="title">
+                <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+              </div>
+            </div>
+
+            <div class="item-work">
+              <div class="title">
+                <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+              </div>
+            </div>
+
+            <div class="item-work">
+              <div class="title">
+                <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="menu__item">
-      <div class="menu__item-image_wrapper">
-        <div class="menu__item-image_inner">
-          <img class="menu__item-image" src="/images/forest-flavours.avif" />
-        </div>
-      </div>
-      <div class="text-container">
-        <div class="divider"></div>
-        <div class="flex-text">
-          <h2 class="menu__item-text"><span class="menu__item-innertext">Vild Mad</span></h2>
-          <p>A themed website for Supertusch, designed to educate 7th-grade students about foraging.</p>
-        </div>
-      </div>
-    </div>
-    <div class="menu__item">
-      <div class="menu__item-image_wrapper">
-        <div class="menu__item-image_inner">
-          <img class="menu__item-image" src="/images/mette-mink.avif" />
-        </div>
-      </div>
-      <div class="text-container">
-        <div class="divider"></div>
-        <div class="flex-text">
-          <h2 class="menu__item-text"><span class="menu__item-innertext">Mette's Mink Mission</span></h2>
-          <p>An interactive animated game exclusively designed and programmed by me.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 </MainLayout>
 
 <style>
+  .works {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-bottom: 250px;
+    position: relative;
+  }
+
+  .works .container-works {
+    width: 1200px;
+    max-width: 100%;
+    padding: 0 15px;
+    margin: auto;
+  }
+
+  .works .content-works {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .works .header-works {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-bottom: 35px;
+    border-bottom: 1px solid var(--color_text);
+  }
+
+  .works .header-works h3 {
+    font-size: 26px;
+  }
+
+  .works #gallery-work {
+    position: fixed;
+    width: 385px;
+    height: 280px;
+    transform: translateY(-50%, 50%);
+    z-index: 999;
+    overflow: hidden;
+    pointer-events: none;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 2s;
+  }
+
+  .works #work-images {
+    width: 100%;
+    height: calc(280px * 3);
+    display: flex;
+    flex-direction: column;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 2s;
+  }
+
+  .works .work-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .works .grid-works {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .works .grid-works .item-work {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--color_text);
+    opacity: 0.6;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+  }
+
+  .works .grid-works .item-work .title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .works .grid-works .item-work:hover {
+    opacity: 1;
+  }
+
+  .works .grid-works .item-work h4 {
+    font-size: 26px;
+    line-height: 40px;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  const elementsWorks = document.querySelectorAll(".item-work");
+  const slidePicWorks = document.querySelector("#gallery-work");
+  const slidePicsWorks = document.querySelector("#work-images");
+
+  gsap.set(slidePicWorks, { autoAlpha: 0 });
+
+  elementsWorks.forEach((element, index) => {
+    element.addEventListener("mouseenter", function () {
+      gsap.to(slidePicsWorks, {
+        marginTop: `-${280 * index}px`,
+        duration: 0.2,
+        ease: "power1",
+      });
+    });
+
+    element.addEventListener("mouseleave", function () {
+      gsap.to(element, { color: "initial", duration: 0.2, ease: "power1" });
+    });
+  });
+
+  window.addEventListener("mousemove", function (e) {
+    gsap.to(slidePicWorks, {
+      top: `${e.clientY}px`,
+      left: `${e.clientX}px`,
+      xPercent: -20,
+      yPercent: -45,
+      duration: 0.2,
+      ease: "power1",
+    });
+  });
+
+  document.querySelector(".items-works").addEventListener("mouseenter", function () {
+    gsap.to(slidePicWorks, {
+      autoAlpha: 1,
+      duration: 0.2,
+      ease: "power1",
+    });
+  });
+
+  document.querySelector(".items-works").addEventListener("mouseleave", function () {
+    gsap.to(slidePicWorks, {
+      autoAlpha: 0,
+      duration: 0.2,
+      ease: "power1",
+    });
+  });
+</script>
+
+<!-- <style>
   .cases-container {
     padding-top: 12%;
   }
@@ -105,7 +244,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     width: 100%;
     height: 1px;
     margin: 0.2em 0;
-    background: black;
+    background: var(--color_white);
   }
   .flex-text {
     height: 80px;
@@ -152,7 +291,6 @@ import MainLayout from "../layouts/MainLayout.astro";
     text-transform: uppercase;
     font-size: 2.2rem;
     line-height: 1;
-    color: var(--text-color);
     opacity: 1;
     transition: opacity 350ms ease;
     white-space: nowrap;
@@ -161,7 +299,7 @@ import MainLayout from "../layouts/MainLayout.astro";
   }
 
   .menu__item:hover .menu__item-text {
-    color: #5364ffd2;
+    color: var(--color_blue);
   }
 
   .menu__item:hover .menu__item-image_wrapper {
@@ -258,4 +396,4 @@ import MainLayout from "../layouts/MainLayout.astro";
       itemBounds = item.getBoundingClientRect();
     });
   });
-</script>
+</script> -->
