@@ -3,23 +3,28 @@ import "../styles/style.css";
 const { style, linket } = Astro.props;
 ---
 
-<a href={linket} class={style}><span><slot /></span></a>
+<a href={linket} class={style}><slot /></a>
 
 <style>
-  .primary {
-    display: inline-block;
+  .primary,
+  .secondary {
+    display: inline-flex; /* Brug flexbox i stedet for inline-block */
+    align-items: center; /* Centrerer indholdet lodret */
+    justify-content: center; /* Centrerer indholdet vandret */
     position: relative;
-    background: var(--color_text); /* Start baggrundsfarve */
-    border: 2px solid var(--color_text);
-    padding: 0.6em 1.8em;
-    color: white;
-    font-size: 1.2em;
+    padding: 0.8em 1.8em;
+    font-size: 1.25em;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
-    border-radius: 60px;
+    border-radius: 1.4em;
     overflow: hidden;
-    margin-top: 8px; /* Får knappen til at rykke ned */
-    margin-right: 16px;
+    margin-top: 25px;
+  }
+
+  .primary {
+    background: var(--color_blue); /* Start baggrundsfarve */
+    border: 2px solid var(--color_blue);
+    color: white;
   }
 
   .primary::after {
@@ -29,7 +34,7 @@ const { style, linket } = Astro.props;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--color_blue) 0%, var(--color_blue) 100%);
+    background: linear-gradient(135deg, var(--button_bg) 0%, var(--button_bg) 100%);
     transform: scaleX(0);
     transform-origin: bottom left;
     transition: transform 0.3s ease-in-out;
@@ -45,19 +50,14 @@ const { style, linket } = Astro.props;
     z-index: 2; /* Sørger for, at teksten er ovenpå */
   }
 
+  .primary:hover {
+    color: white; /* Gør teksten hvid ved hover */
+  }
+
   .secondary {
-    display: inline-block;
-    position: relative;
     background: transparent; /* Start baggrundsfarve */
-    border: 2px solid var(--color_text);
-    padding: 0.6em 1.8em;
+    border: 2px solid var(--color_blue);
     color: var(--color_text);
-    font-size: 1.2em;
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-    border-radius: 60px;
-    overflow: hidden;
-    margin-top: 8px; /* Får knappen til at rykke ned */
   }
 
   .secondary::after {
@@ -83,18 +83,11 @@ const { style, linket } = Astro.props;
     z-index: 2; /* Sørger for, at teksten er ovenpå */
   }
 
-  .primary:hover {
-    border: 2px solid var(--color_blue);
-  }
   .secondary:hover {
     color: white; /* Gør teksten hvid ved hover */
-    border: 2px solid var(--color_blue);
   }
 
-  .secondary:hover::after {
-    transform: scaleX(1); /* Skalerer effekten over hele knappen */
-  }
-
+  /* Responsiv justering af skrifttype */
   @media screen and (min-width: 768px) {
     a {
       font-size: var(--font_size_regular);

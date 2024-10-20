@@ -5,28 +5,28 @@ import { AnimatePresence } from "framer-motion";
 
 <header>
   <div class="header">
-    <div class="logo">
-      <!-- <a href="/"> -->
-      <div class="copyright">©</div>
-      <div class="name">
-        <p class="codeBy">Code By</p>
-        <p class="sebastian">Sebastian</p>
-        <p class="engelbreth">Engelbreth</p>
+    <a href="/">
+      <div class="logo">
+        <div class="copyright">©</div>
+        <div class="name">
+          <p class="codeBy">Code By</p>
+          <p class="sebastian">Sebastian</p>
+          <p class="engelbreth">Engelbreth</p>
+        </div>
       </div>
-      <!-- </a> -->
-    </div>
+    </a>
     <div class="nav" id="nav">
       <!-- Tilføjet id til nav -->
       <div class="el">
-        <p>Cases</p>
+        <a href="/cases"><p>Cases</p></a>
         <div class="indicator"></div>
       </div>
       <div class="el">
-        <p>About</p>
+        <a href="/about"><p>About</p></a>
         <div class="indicator"></div>
       </div>
       <div class="el">
-        <p>Contact</p>
+        <a href="/contact"><p>Contact</p></a>
         <div class="indicator"></div>
       </div>
     </div>
@@ -46,16 +46,18 @@ import { AnimatePresence } from "framer-motion";
       z-index: 2;
       display: flex;
       justify-content: space-between;
-      padding: 35px;
+      align-items: center;
+      padding: 35px 50px;
       width: 100%;
       box-sizing: border-box;
+      border-bottom: 0.5px solid #c5c5c562;
     }
 
     .logo {
       font-family: "Darker Grotesque", sans-serif;
       display: flex;
       align-items: center;
-      cursor: pointer;
+      font-size: 1.2rem;
     }
 
     .name {
@@ -64,19 +66,21 @@ import { AnimatePresence } from "framer-motion";
       white-space: nowrap;
       position: relative;
       transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+      width: 148px;
     }
 
     .codeBy,
     .sebastian,
     .engelbreth {
       margin: 0;
-      padding-left: 0.3em;
+      padding-left: 0.2em;
       transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
     }
 
     .engelbreth {
       position: absolute;
-      left: 120px;
+      left: 145px;
+      color: var(--color_blue);
     }
 
     /* Apply hover effect to .logo, not .name */
@@ -85,22 +89,22 @@ import { AnimatePresence } from "framer-motion";
     }
 
     .logo:hover .sebastian {
-      transform: translateX(-65%);
+      transform: translateX(-92.5%);
     }
 
     .logo:hover .engelbreth {
-      transform: translateX(-65%);
+      transform: translateX(-95%);
     }
 
     .nav {
       display: flex;
+      font-size: 1.125rem;
     }
 
     .el {
       display: flex;
       position: relative;
       padding: 15px;
-      cursor: pointer;
 
       .indicator {
         width: 6px;
@@ -126,11 +130,6 @@ import { AnimatePresence } from "framer-motion";
       transform: scale(0); /* Start som skjult */
       right: 0px;
       z-index: 4;
-
-      .button {
-        cursor: pointer;
-      }
-
       .burger {
         width: 30px;
         height: 4px;

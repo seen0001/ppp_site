@@ -14,7 +14,7 @@ const { title } = Astro.props;
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- Fortæller at det er et pesponsivt site -->
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- SEO metadata -->
     <meta name="description" content="Portfolio" />
@@ -25,7 +25,7 @@ const { title } = Astro.props;
     <meta name="robots" content="noindex, nofollow" />
 
     <!-- fa-icon -->
-    <link rel="icon" type="image/svg+xml" href="/iconer2/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo/logo.svg" />
 
     <!-- Roboto font  -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,22 +41,29 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body id="top">
-    <div class="circle"></div>
+    <div class="cursor"></div>
+    <div class="cursor-inner"></div>
 
     <Navigation2 />
-    <div>
-      <main>
-        <slot />
-      </main>
+    <main>
+      <slot />
+    </main>
+    <div class="border-spacer"></div>
+    <div class="circleContainer">
+      <div class="circle"></div>
     </div>
     <Footer />
   </body>
   <style>
     main {
-      padding-top: 0px;
-      position: relative;
-      margin-bottom: 500px;
-      z-index: 1;
+      margin: 0% 2%;
+      border: 0.5px solid #c5c5c582;
+    }
+
+    .border-spacer {
+      width: 100%;
+      height: var(--footer-height);
+      background: transparent;
     }
 
     nav {
@@ -65,84 +72,87 @@ const { title } = Astro.props;
       width: 100%;
       z-index: 10;
     }
-    .circle {
-      --circle-size: 35px;
+
+    .cursor {
+      width: 2.5em;
+      height: 2.5em;
+      border-radius: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.5s cubic-bezier(0.1, 0.9, 0.2, 1);
       position: fixed;
-      height: var(--circle-size);
-      width: var(--circle-size);
-      border: 2px solid var(--color_blue);
-      border-radius: 50%;
-      top: calc(var(--circle-size) / 2 * -1);
-      left: calc(var(--circle-size) / 2 * -1);
       pointer-events: none;
-      z-index: 1000;
+      left: 0;
+      top: 0;
+      transform: translate(calc(-50% + 15px), -50%);
+      z-index: 99;
+      mix-blend-mode: difference;
+    }
+
+    .cursor-inner {
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background-color: rgba(255, 255, 255, 1);
+      opacity: 1;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      transition:
+        width 0.3s,
+        height 0.3s,
+        opacity 0.3s;
+      z-index: 99;
+      mix-blend-mode: difference;
+      overflow: hidden;
+    }
+
+    .cursor.hover {
+      width: 4.5em;
+      height: 4.5em;
+      border: 1px solid rgba(255, 255, 255, 1);
+    }
+
+    .cursor-inner.cursorinnerhover {
+      width: 1.5em;
+      height: 1.5em;
     }
   </style>
 
   <script>
-    const circleElement = document.querySelector(".circle");
+    var cursor = document.querySelector(".cursor");
+    var cursorinner = document.querySelector(".cursor-inner");
+    var a = document.querySelectorAll("a, button"); // Målret alle a- og button-elementer
 
-    // Create objects to track mouse position and custom cursor position
-    const mouse = { x: 0, y: 0 }; // Track current mouse position
-    const previousMouse = { x: 0, y: 0 }; // Store the previous mouse position
-    const circle = { x: 0, y: 0 }; // Track the circle position
-
-    // Initialize variables to track scaling and rotation
-    let currentScale = 0; // Track current scale value
-    let currentAngle = 0; // Track current angle value
-
-    // Update mouse position on the 'mousemove' event
-    window.addEventListener("mousemove", (e) => {
-      mouse.x = e.x;
-      mouse.y = e.y;
+    document.addEventListener("mousemove", function (e) {
+      var x = e.clientX;
+      var y = e.clientY;
+      cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
     });
 
-    // Smoothing factor for cursor movement speed (0 = smoother, 1 = instant)
-    const speed = 0.3;
+    document.addEventListener("mousemove", function (e) {
+      var x = e.clientX;
+      var y = e.clientY;
+      cursorinner.style.left = x + "px";
+      cursorinner.style.top = y + "px";
+    });
 
-    // Start animation
-    const tick = () => {
-      // MOVE
-      // Calculate circle movement based on mouse position and smoothing
-      circle.x += (mouse.x - circle.x) * speed;
-      circle.y += (mouse.y - circle.y) * speed;
-      // Create a transformation string for cursor translation
-      const translateTransform = `translate(${circle.x}px, ${circle.y}px)`;
+    document.addEventListener("mousedown", function () {
+      cursor.classList.add("click");
+      cursorinner.classList.add("cursorinnerhover");
+    });
 
-      // SQUEEZE
-      // 1. Calculate the change in mouse position (deltaMouse)
-      const deltaMouseX = mouse.x - previousMouse.x;
-      const deltaMouseY = mouse.y - previousMouse.y;
-      // Update previous mouse position for the next frame
-      previousMouse.x = mouse.x;
-      previousMouse.y = mouse.y;
-      // 2. Calculate mouse velocity using Pythagorean theorem and adjust speed
-      const mouseVelocity = Math.min(Math.sqrt(deltaMouseX ** 2 + deltaMouseY ** 2) * 4, 150);
-      // 3. Convert mouse velocity to a value in the range [0, 0.5]
-      const scaleValue = (mouseVelocity / 150) * 0.5;
-      // 4. Smoothly update the current scale
-      currentScale += (scaleValue - currentScale) * speed;
-      // 5. Create a transformation string for scaling
-      const scaleTransform = `scale(${1 + currentScale}, ${1 - currentScale})`;
+    document.addEventListener("mouseup", function () {
+      cursor.classList.remove("click");
+      cursorinner.classList.remove("cursorinnerhover");
+    });
 
-      // ROTATE
-      // 1. Calculate the angle using the atan2 function
-      const angle = (Math.atan2(deltaMouseY, deltaMouseX) * 180) / Math.PI;
-      // 2. Check for a threshold to reduce shakiness at low mouse velocity
-      if (mouseVelocity > 20) {
-        currentAngle = angle;
-      }
-      // 3. Create a transformation string for rotation
-      const rotateTransform = `rotate(${currentAngle}deg)`;
-
-      // Apply all transformations to the circle element in a specific order: translate -> rotate -> scale
-      circleElement.style.transform = `${translateTransform} ${rotateTransform} ${scaleTransform}`;
-
-      // Request the next frame to continue the animation
-      window.requestAnimationFrame(tick);
-    };
-
-    // Start the animation loop
-    tick();
+    a.forEach((item) => {
+      item.addEventListener("mouseover", () => {
+        cursor.classList.add("hover");
+      });
+      item.addEventListener("mouseleave", () => {
+        cursor.classList.remove("hover");
+      });
+    });
   </script>
 </html>

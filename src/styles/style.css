@@ -1,5 +1,6 @@
 /*************** Reset *********************/
 * {
+  cursor: none;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -69,6 +70,10 @@ a {
   text-decoration: none;
 }
 
+.word {
+  transform: translateY(115px);
+  transition: transform 0.5s;
+}
 /* ___________________________ TABLET  ___________________________*/
 /* reglerne gælder når skærmen er minimum 768px */
 @media screen and (min-width: 768px) {

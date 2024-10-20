@@ -5,56 +5,82 @@ import Preloader from "../components/Preloader.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Button from "../components/Button.astro";
 import TextKasse from "../components/TextKasse.astro";
+import Cases from "../components/Cases.astro";
 ---
 
-<MainLayout title="Web by Sebastian Elias.">
-  <Preloader />
-  <main>
-    <div class="scrollbar-container">
-      <section class="parallax-background-section">
-        <div class="parallax-background-element pbe-1">
-          <article class="hero">
-            <div class="spline_bg">
-              <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.29/build/spline-viewer.js"></script>
-              <spline-viewer url="https://prod.spline.design/xVSRqW6JGiwDBWAW/scene.splinecode"></spline-viewer>
-            </div>
-            <div class="hero_text">
-              <h1>Helping brands to stand out in the digital era.</h1>
-              <p>Together we build the blocks of your vision - no nonsense, just bold digital solutions that make your brand stand out.</p>
-              <div>
-                <Button style="primary" linket="/contact">Contact me</Button>
-                <Button style="secondary" linket="/files/resume.pdf">Download CV</Button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <TextKasse h2="Hey," image="/images/cv-photo.avif" image_alt="Billede af Sebastian Engelbreth">
-        <div class="kasse-text">
-          <h2>I'm <span class="input"></span></h2>
-          <div class="kasse-text-p">
-            <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
-            <p>
-              <br />
-              I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
-            </p>
-          </div>
-        </div>
-      </TextKasse>
+<Preloader />
+<MainLayout title="Code by Sebastian Engelbreth.">
+  <div class="scrollbar-container">
+    <article class="hero">
+      <div class="spline_bg">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.32/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/XMTWLgbbW8U3r-Pa/scene.splinecode"></spline-viewer>
+        <!-- <p>Helping brands to stand out in the digital era.</p> -->
+      </div>
+    </article>
+    <div class="scroll-image">
+      <img src="/iconer2/scroll.svg" alt="Scroll Icon" />
     </div>
-    <div class="container">
-      <h2 class="text">Frontend Code<span class="text-behind">HTML, CSS, JavaScript, Astro, React & Next.js</span></h2>
-      <h2 class="text">UX/UI<span class="text-behind">Figma, Adobe CC & Spline</span></h2>
-      <h2 class="text">Audio<span class="text-behind">Ableton</span></h2>
-      <h2 class="text">Teamwork<span class="text-behind">GitHub, Trello, Scrum etc.</span></h2>
-      <h2 class="text">Practical Tools<span class="text-behind">Microsoft 365 (Excel, Word, Powerpoint)</span></h2>
-    </div>
+  </div>
 
-    <!-- <span class="button-line"></span> -->
-  </main>
+  <div class="hero_text">
+    <p class="sentence">
+      Together we build the blocks of your vision - no nonsense, just bold digital solutions that make your brand stand out.
+      <div class="buttons-flex">
+        <Button linket="/contact" style="primary">Contact me</Button>
+      </div>
+    </p>
+  </div>
+  <div class="header-divider-group">
+    <div class="header-divider">
+      <div>
+        <hr class="header-divider-line" />
+      </div>
+    </div>
+    <div class="header-divider">
+      <div>
+        <h2>About</h2>
+      </div>
+    </div>
+  </div>
+
+  <TextKasse h2="Hey," image="/images/cv-photo.avif" image_alt="Billede af Sebastian Engelbreth">
+    <div class="kasse-text">
+      <h2>I'm <span class="input"></span></h2>
+      <div class="kasse-text-p">
+        <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
+        <p>
+          <br />
+          I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
+        </p>
+      </div>
+      <div>
+        <Button linket="/files/resume.pdf" style="secondary">Download CV</Button>
+      </div>
+    </div>
+  </TextKasse>
+
+  <div class="container">
+    <h2 class="text">Frontend Code<span class="text-behind">HTML, CSS, JavaScript, Astro, React & Next.js</span></h2>
+    <h2 class="text">UX/UI<span class="text-behind">Figma, Adobe CC & Spline</span></h2>
+    <h2 class="text">Audio<span class="text-behind">Ableton</span></h2>
+    <h2 class="text">Teamwork<span class="text-behind">GitHub, Trello, Scrum etc.</span></h2>
+    <h2 class="text">Practical Tools<span class="text-behind">Microsoft 365 (Excel, Word, Powerpoint)</span></h2>
+  </div>
+  <div class="header-divider-group">
+    <div class="header-divider">
+      <div>
+        <hr class="header-divider-line" />
+      </div>
+    </div>
+    <div class="header-divider">
+      <div>
+        <h2>Former Cases</h2>
+      </div>
+    </div>
+  </div>
+  <Cases />
 </MainLayout>
-
 <script>
   import Typed from "typed.js";
 
@@ -67,6 +93,36 @@ import TextKasse from "../components/TextKasse.astro";
 </script>
 
 <style>
+  .scrollbar-container {
+    position: relative;
+    height: 100vh;
+    margin-bottom: 60px;
+  }
+
+  .hero_text {
+    margin-bottom: 180px;
+    margin-inline: 16%;
+  }
+
+  .header-divider-group {
+    margin-bottom: 85px;
+  }
+  .header-divider {
+    display: flex;
+    justify-content: center;
+    h2 {
+      margin-top: 10px;
+      font-size: 2.4rem;
+    }
+    .header-divider-line {
+      background: var(--color_text);
+      width: 25px;
+    }
+    hr {
+      height: 2.5px;
+    }
+  }
+
   section.parallax-background-section {
     position: relative;
     height: 100vh;
@@ -80,6 +136,18 @@ import TextKasse from "../components/TextKasse.astro";
     height: 100%;
     background-size: cover;
     background-attachment: fixed;
+  }
+
+  .scroll-image {
+    position: absolute; /* Gør billedet fast i viewport */
+    top: 520px;
+    left: 1240px; /* Centrerer billedet horisontalt */
+    z-index: 10;
+  }
+
+  .scroll-image img {
+    width: 50px; /* Juster størrelsen som ønsket */
+    height: auto;
   }
 
   .kasse-text h2 {
@@ -115,38 +183,16 @@ import TextKasse from "../components/TextKasse.astro";
   .visible {
     opacity: 1; /* Gør preloaderen synlig */
   }
-
-  .hero {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-  }
-  .hero_text {
-    z-index: 1;
-    grid-area: 3 / 2 / 5 / 5;
-    font-family: var(--font_body);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .hero_text h1 {
-    line-height: 4.4rem;
-  }
   p {
-    font-size: var(--font_size_large);
+    font-size: var(--font_size_medium);
+    line-height: 150%;
+    font-weight: 500;
+    max-width: 500px;
   }
 
   .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    margin-inline: 10%;
+    margin-bottom: 200px;
+    padding-inline: 8%;
   }
 
   .text {
@@ -200,11 +246,9 @@ import TextKasse from "../components/TextKasse.astro";
   }
 
   .spline_bg {
-    grid-area: 1 / 1 / 9 / 9;
-    height: 100vh;
-    left: 0;
-    top: 0;
+    height: 100%;
     width: auto;
+    border-bottom: 0.5px solid #c5c5c562;
   }
   .center-icons {
     display: flex;
@@ -271,7 +315,16 @@ import TextKasse from "../components/TextKasse.astro";
   }
 
   h1 {
-    font-size: 4cqw;
+    font-size: 3.8cqw;
+  }
+
+  .sentence {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    font-size: 2rem;
+    max-width: 600px;
+    font-weight: 300;
+  }
+  .button-flex {
   }
 
   @media screen and (min-width: 768px) {
@@ -288,9 +341,10 @@ import TextKasse from "../components/TextKasse.astro";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import Lenis from "lenis";
+  import { TextPlugin } from "gsap/TextPlugin";
+  import SplitType from "split-type";
 
-  // Register ScrollTrigger plugin
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
   // Initialize a new Lenis instance for smooth scrolling
   const lenis = new Lenis();
@@ -321,64 +375,42 @@ import TextKasse from "../components/TextKasse.astro";
       scrollTrigger: {
         trigger: text,
         start: "center 90%",
-        end: "center 50%",
+        end: "center 45%",
         scrub: true,
       },
     });
   });
 
-  // GSAP animations for section elements
-  const sectionElements = gsap.utils.toArray(".tekst_indhold1, .tekst_indhold2");
-  sectionElements.forEach((element) => {
-    gsap.to(element, {
-      opacity: 1,
-      ease: "none",
-      scrollTrigger: {
-        trigger: element,
-        start: "top 100%",
-        end: "top 40%",
-        scrub: 0.4,
-      },
-    });
+  gsap.to(".scroll-image", {
+    scale: 2.5, // Skaler billedet til 1.5 gange størrelsen
+    ease: "power1.out", // En blød easing-effekt
+    scrollTrigger: {
+      trigger: ".scroll-image",
+      start: "top 80%",
+      end: "bottom 60%",
+      pin: true,
+      scrub: 0.5, // Juster scrub for en mere flydende animation
+    },
   });
 
-  // Parallax
+  // Tilføj denne del for at styre billedrotation
+  gsap.to(".scroll-image img", {
+    rotation: 360,
+    duration: 10,
+    repeat: -1,
+    ease: "linear",
+  });
 
-  gsap.utils.toArray(".parallax-background-section").forEach((section: HTMLElement, i: number) => {
-    // TypeScript: Ensure section.bg is properly typed and querySelector is handled safely
-    const bg = section.querySelector(".parallax-background-element") as HTMLElement | null;
+  const myText = new SplitType(".sentence");
 
-    if (bg) {
-      // Indstil den indledende baggrundsposition
-      bg.style.backgroundPosition = "50% 0px";
-
-      gsap.to(bg, {
-        backgroundPosition: `50% ${-innerHeight / 2}px`,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          scrub: true,
-          onUpdate: function (self) {
-            gsap.set(bg, { top: self.scroll() - (bg.parentElement?.offsetTop || 0) });
-          },
-        },
-      });
-    } else {
-      bg.style.backgroundPosition = "50% 0px";
-
-      gsap.to(bg, {
-        backgroundPosition: `50% ${-innerHeight / 2}px`,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "top 50%",
-          scrub: true,
-          onUpdate: function (self) {
-            gsap.set(bg, { top: self.scroll() - (bg.parentElement?.offsetTop || 0) });
-          },
-        },
-      });
-    }
+  gsap.to(".word", {
+    y: 0,
+    stagger: 0.01,
+    duration: 0.1,
+    scrollTrigger: {
+      trigger: ".sentence",
+      start: "top bottom",
+      toggleActions: "play reset play reset", // Gør animationen omvendt, når man scroller op
+    },
   });
 </script>
