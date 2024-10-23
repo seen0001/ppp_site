@@ -22,14 +22,53 @@ import Cases from "../components/Cases.astro";
       <img src="/iconer2/scroll.svg" alt="Scroll Icon" />
     </div>
   </div>
-
-  <div class="hero_text">
-    <p class="sentence">
-      Together we build the blocks of your vision - no nonsense, just bold digital solutions that make your brand stand out.
-      <div class="buttons-flex">
-        <Button linket="/contact" style="primary">Contact me</Button>
+  <div class="border-px">
+    <div class="hero_text">
+      <p class="sentence">
+        Together we build the blocks of your vision - no nonsense, just bold digital solutions that make your brand stand out.
+        <div class="buttons-flex">
+          <Button linket="#contact" style="primary">Contact me</Button>
+        </div>
+      </p>
+    </div>
+  </div>
+  <div class="border-px">
+    <div class="header-divider-group">
+      <div class="header-divider">
+        <div>
+          <hr class="header-divider-line" />
+        </div>
       </div>
-    </p>
+      <div class="header-divider">
+        <div>
+          <h2 id="about">About</h2>
+        </div>
+      </div>
+    </div>
+
+    <TextKasse h2="Hey," image="/images/cv-photo.avif" image_alt="Billede af Sebastian Engelbreth">
+      <div class="kasse-text">
+        <h2>I'm <span class="input"></span></h2>
+        <div class="kasse-text-p">
+          <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
+          <p>
+            <br />
+            I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
+          </p>
+        </div>
+        <div>
+          <!-- <Button linket="/files/resume.pdf" style="secondary">Download CV</Button> -->
+        </div>
+      </div>
+    </TextKasse>
+
+    <div class="container">
+      <h2 class="text">Frontend Code<span class="text-behind">HTML, CSS, JavaScript, Astro, React & Next.js</span></h2>
+      <h2 class="text">UX/UI<span class="text-behind">Figma, Adobe CC & Spline</span></h2>
+      <h2 class="text">Audio<span class="text-behind">Ableton</span></h2>
+      <h2 class="text">Teamwork<span class="text-behind">GitHub, Trello, Scrum etc.</span></h2>
+      <h2 class="text">Practical Tools<span class="text-behind">Microsoft 365 (Excel, Word, Powerpoint)</span></h2>
+    </div>
   </div>
   <div class="header-divider-group">
     <div class="header-divider">
@@ -39,43 +78,7 @@ import Cases from "../components/Cases.astro";
     </div>
     <div class="header-divider">
       <div>
-        <h2>About</h2>
-      </div>
-    </div>
-  </div>
-
-  <TextKasse h2="Hey," image="/images/cv-photo.avif" image_alt="Billede af Sebastian Engelbreth">
-    <div class="kasse-text">
-      <h2>I'm <span class="input"></span></h2>
-      <div class="kasse-text-p">
-        <p>I am a 25-year-old passionate multimedia design student, based in Copenhagen, with a strong interest in code, digital design, and user experiences.</p>
-        <p>
-          <br />
-          I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
-        </p>
-      </div>
-      <div>
-        <Button linket="/files/resume.pdf" style="secondary">Download CV</Button>
-      </div>
-    </div>
-  </TextKasse>
-
-  <div class="container">
-    <h2 class="text">Frontend Code<span class="text-behind">HTML, CSS, JavaScript, Astro, React & Next.js</span></h2>
-    <h2 class="text">UX/UI<span class="text-behind">Figma, Adobe CC & Spline</span></h2>
-    <h2 class="text">Audio<span class="text-behind">Ableton</span></h2>
-    <h2 class="text">Teamwork<span class="text-behind">GitHub, Trello, Scrum etc.</span></h2>
-    <h2 class="text">Practical Tools<span class="text-behind">Microsoft 365 (Excel, Word, Powerpoint)</span></h2>
-  </div>
-  <div class="header-divider-group">
-    <div class="header-divider">
-      <div>
-        <hr class="header-divider-line" />
-      </div>
-    </div>
-    <div class="header-divider">
-      <div>
-        <h2>Former Cases</h2>
+        <h2 id="former-cases">Former Cases</h2>
       </div>
     </div>
   </div>
@@ -93,15 +96,20 @@ import Cases from "../components/Cases.astro";
 </script>
 
 <style>
+  .border-px {
+    border-bottom: 0.5px solid #c5c5c562;
+    margin-bottom: 160px;
+  }
   .scrollbar-container {
     position: relative;
     height: 100vh;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
+    border-bottom: 0.5px solid #c5c5c562;
   }
 
   .hero_text {
-    margin-bottom: 180px;
     margin-inline: 16%;
+    gap: 160px;
   }
 
   .header-divider-group {
@@ -141,7 +149,8 @@ import Cases from "../components/Cases.astro";
   .scroll-image {
     position: absolute; /* Gør billedet fast i viewport */
     top: 520px;
-    left: 1240px; /* Centrerer billedet horisontalt */
+    left: 8%; /* Centrerer billedet horisontalt */
+    transform: translateX(-50%);
     z-index: 10;
   }
 
@@ -151,7 +160,7 @@ import Cases from "../components/Cases.astro";
   }
 
   .kasse-text h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .input {
@@ -187,11 +196,10 @@ import Cases from "../components/Cases.astro";
     font-size: var(--font_size_medium);
     line-height: 150%;
     font-weight: 500;
-    max-width: 500px;
   }
 
   .container {
-    margin-bottom: 200px;
+    margin-bottom: 160px;
     padding-inline: 8%;
   }
 
@@ -248,7 +256,6 @@ import Cases from "../components/Cases.astro";
   .spline_bg {
     height: 100%;
     width: auto;
-    border-bottom: 0.5px solid #c5c5c562;
   }
   .center-icons {
     display: flex;
@@ -321,28 +328,33 @@ import Cases from "../components/Cases.astro";
   .sentence {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     font-size: 2rem;
-    max-width: 600px;
     font-weight: 300;
   }
-  .button-flex {
+  .buttons-flex {
   }
 
   @media screen and (min-width: 768px) {
   }
 
   @media screen and (min-width: 1024px) {
+    .hero_text {
+      display: flex;
+    }
   }
 
   @media screen and (min-width: 1440px) {
+    .kasse-text h2 {
+      font-size: 3rem;
+    }
   }
 </style>
 
 <script>
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import Lenis from "lenis";
   import { TextPlugin } from "gsap/TextPlugin";
   import SplitType from "split-type";
+  import Lenis from "lenis";
 
   gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -358,13 +370,28 @@ import Cases from "../components/Cases.astro";
   lenis.on("scroll", ScrollTrigger.update);
 
   // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
-  // This ensures Lenis's smooth scroll animation updates on each GSAP tick
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000); // Convert time from seconds to milliseconds
   });
 
   // Disable lag smoothing in GSAP to prevent any delay in scroll animations
   gsap.ticker.lagSmoothing(0);
+
+  // Scroll to section when navigation link is clicked, with slower scroll
+  document.querySelectorAll(".nav a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = e.currentTarget.getAttribute("href").substring(1); // Get the target ID
+      const targetElement = document.getElementById(targetId); // Find the target element by ID
+
+      if (targetElement) {
+        lenis.scrollTo(targetElement, {
+          duration: 1.5, // Set the duration for slower scroll (default is 1)
+          easing: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
+        });
+      }
+    });
+  });
 
   // GSAP animations for text elements
   const textElements = gsap.utils.toArray(".text");
@@ -387,13 +414,12 @@ import Cases from "../components/Cases.astro";
     scrollTrigger: {
       trigger: ".scroll-image",
       start: "top 80%",
-      end: "bottom 60%",
+      end: "bottom 50%",
       pin: true,
-      scrub: 0.5, // Juster scrub for en mere flydende animation
+      scrub: 1,
     },
   });
 
-  // Tilføj denne del for at styre billedrotation
   gsap.to(".scroll-image img", {
     rotation: 360,
     duration: 10,
@@ -409,8 +435,30 @@ import Cases from "../components/Cases.astro";
     duration: 0.1,
     scrollTrigger: {
       trigger: ".sentence",
+      start: "top 98%",
+      end: "bottom",
+      toggleActions: "play reset play reset",
+    },
+  });
+
+  gsap.to(".billede", {
+    y: -50,
+    ease: "sine.inOut",
+    scrollTrigger: {
+      trigger: ".billede",
       start: "top bottom",
-      toggleActions: "play reset play reset", // Gør animationen omvendt, når man scroller op
+      scrub: 1,
+    },
+  });
+
+  gsap.to(".primary", {
+    y: -20,
+    ease: "sine.inOut",
+    scrollTrigger: {
+      trigger: ".primary",
+      start: "top bottom",
+      end: "bottom 20%",
+      scrub: 1,
     },
   });
 </script>

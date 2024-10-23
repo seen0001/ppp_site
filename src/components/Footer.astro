@@ -1,17 +1,27 @@
 ---
 import "../styles/style.css";
+import Mail from "../components/Mail.astro";
 ---
 
-<footer>
+<footer id="contact">
+  <div class="mails">
+    <div class="mails_grid">
+      <div class="footer-billede"></div>
+      <div class="contact-text">
+        <h4>Get in touch!</h4>
+      </div>
+    </div>
+    <Mail />
+  </div>
   <div class="content">
     <div class="sociale_links">
       <a href="https://www.linkedin.com/in/sebastian-elias-engelbreth-695555300"><i class="ri-linkedin-box-fill"></i></a>
       <a href="https://github.com/seen0001"><i class="ri-github-fill"></i></a>
     </div>
     <div class="links">
-      <a href="/cases">Cases</a>
-      <a href="#" class="open-newsletter-modal">About</a>
-      <a href="/contact">Contact</a>
+      <a href="#former-cases">Cases</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
   <hr />
@@ -38,6 +48,10 @@ import "../styles/style.css";
     margin-bottom: 64px;
     /* margin-top: 32px; */
   }
+  .mails {
+    display: flex;
+    justify-content: center;
+  }
   .sociale_links {
     display: flex;
     gap: 12px;
@@ -52,9 +66,7 @@ import "../styles/style.css";
     font-size: var(--font_size_medium);
     justify-content: center;
   }
-  .sociale_links a:hover {
-    background-color: var(--color_blue);
-  }
+
   .links {
     display: flex;
     gap: 32px;
@@ -95,6 +107,23 @@ import "../styles/style.css";
     color: var(--color_blue);
   }
 
+  .contact-text {
+    text-align: center;
+  }
+  .mails_grid {
+    display: flex;
+  }
+  .footer-billede {
+    margin-right: 0.125em;
+    height: 5em;
+    width: 5em;
+    background: url(/images/cv-photo.avif) center center no-repeat;
+    border-radius: 50%;
+    background-size: cover;
+  }
+  .contact-text h4 {
+    font-size: 4rem;
+  }
   /* ___________________________ TABLET  ___________________________*/
   @media screen and (min-width: 768px) {
     .credits {
@@ -109,5 +138,11 @@ import "../styles/style.css";
 
   /* ___________________________ DESKTOP  ___________________________*/
   @media screen and (min-width: 1024px) {
+    .mails {
+      display: block;
+    }
+    .contact-text {
+      text-align: start;
+    }
   }
 </style>

@@ -44,10 +44,6 @@ body {
   background-color: var(--bg_color);
 }
 
-h1 {
-  color: var(--header_color);
-}
-
 p,
 a {
   color: var(--color_text);

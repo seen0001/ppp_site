@@ -1,6 +1,5 @@
 ---
 import "../styles/style.css";
-import { AnimatePresence } from "framer-motion";
 ---
 
 <header>
@@ -18,23 +17,17 @@ import { AnimatePresence } from "framer-motion";
     <div class="nav" id="nav">
       <!-- Tilføjet id til nav -->
       <div class="el">
-        <a href="/cases"><p>Cases</p></a>
+        <a href="#former-cases"><p>Cases</p></a>
         <div class="indicator"></div>
       </div>
       <div class="el">
-        <a href="/about"><p>About</p></a>
+        <a href="#about"><p>About</p></a>
         <div class="indicator"></div>
       </div>
       <div class="el">
-        <a href="/contact"><p>Contact</p></a>
+        <a href="#contact"><p>Contact</p></a>
         <div class="indicator"></div>
       </div>
-    </div>
-  </div>
-
-  <div class="headerButtonContainer">
-    <div id="burger-button" class="button">
-      <div id="burger" class="burger"></div>
     </div>
   </div>
 
@@ -123,66 +116,5 @@ import { AnimatePresence } from "framer-motion";
           transform: scale(1) translateX(-50%);
         }
       }
-    }
-
-    .headerButtonContainer {
-      position: fixed;
-      transform: scale(0); /* Start som skjult */
-      right: 0px;
-      z-index: 4;
-      .burger {
-        width: 30px;
-        height: 4px;
-        background-color: black;
-        margin: 5px 0;
-        transition: transform 0.3s ease;
-      }
-
-      .burgerActive {
-        transform: rotate(90deg); /* Eksempel på transformation, når aktiv */
-      }
-    }
   </style>
-
-  <script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-    document.addEventListener("DOMContentLoaded", function () {
-      const burgerButton = document.getElementById("burger-button");
-      const burger = document.getElementById("burger");
-      const nav = document.getElementById("nav");
-
-      // GSAP Animation - Scale the burger menu on scroll
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.fromTo(
-        ".headerButtonContainer",
-        { scale: 0 }, // Start med scale 0
-        {
-          scale: 1, // Skaler til 1 når der scrollet
-          scrollTrigger: {
-            trigger: "body", // Scrolling the body
-            start: "top top+=200", // Start animationen efter 200px scroll
-            toggleActions: "play none none reverse", // Afspil ved scroll ned, reverser ved scroll op
-            markers: false, // Sæt til true hvis du vil se markører til debugging
-          },
-          duration: 0.5, // Varighed af skaleringsanimationen
-          ease: "power2.out", // Easing for glat animation
-        }
-      );
-
-      // Automatisk åbning af navigationsmenuen når burger-knappen bliver synlig (ved scroll)
-      ScrollTrigger.create({
-        trigger: ".headerButtonContainer",
-        start: "top center", // Når burger-knappen rammer midten af viewporten
-        toggleClass: { targets: nav, className: "active" }, // Skift "active" class på nav
-        onEnter: () => {
-          burger.classList.add("burgerActive"); // Tilføj aktiv class til burger
-        },
-        onLeaveBack: () => {
-          burger.classList.remove("burgerActive"); // Fjern aktiv class ved scrolling tilbage op
-          nav.classList.remove("active"); // Skjul nav når man scroller tilbage op
-        },
-      });
-    });
-  </script>
 </header>

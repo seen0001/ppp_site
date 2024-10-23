@@ -3,55 +3,52 @@ import "../styles/style.css";
 const { style, linket } = Astro.props;
 ---
 
-<a href={linket} class={style}><slot /></a>
+<a href={linket} class={style}><span><slot /></span></a>
 
 <style>
   .primary,
   .secondary {
-    display: inline-flex; /* Brug flexbox i stedet for inline-block */
-    align-items: center; /* Centrerer indholdet lodret */
-    justify-content: center; /* Centrerer indholdet vandret */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    padding: 0.8em 1.8em;
+    color: white;
+    padding: 0.8em;
     font-size: 1.25em;
-    text-decoration: none;
     transition: color 0.3s ease-in-out;
-    border-radius: 1.4em;
+    border-radius: 50%;
     overflow: hidden;
-    margin-top: 25px;
+    width: 10em;
+    height: 10em;
+    transform: translateY(200px);
   }
 
   .primary {
-    background: var(--color_blue); /* Start baggrundsfarve */
-    border: 2px solid var(--color_blue);
+    background: var(--color_text); /* Start baggrundsfarve */
     color: white;
   }
+  .primary span {
+    position: relative;
+    z-index: 2;
+  }
 
-  .primary::after {
+  .primary::before {
     content: "";
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--button_bg) 0%, var(--button_bg) 100%);
-    transform: scaleX(0);
-    transform-origin: bottom left;
+    background: var(--color_blue);
     transition: transform 0.3s ease-in-out;
-    z-index: 1; /* Ligger under teksten */
+    transform: scaleY(0);
+    transform-origin: top left;
   }
 
-  .primary:hover::after {
-    transform: scaleX(1); /* Skalerer effekten over hele knappen */
-  }
-
-  .primary span {
-    position: relative;
-    z-index: 2; /* Sørger for, at teksten er ovenpå */
-  }
-
-  .primary:hover {
-    color: white; /* Gør teksten hvid ved hover */
+  .primary:hover:before {
+    transform: scaleY(1);
+    transform-origin: bottom left;
   }
 
   .secondary {

@@ -19,19 +19,13 @@ const { h2, image, image_alt } = Astro.props;
     margin-bottom: 5px;
   }
   article {
-    display: flex;
-    gap: 16px;
     margin-inline: 8%;
     margin-bottom: 160px;
   }
-  .tekst_indhold1,
-  .tekst_indhold2 {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
 
   .tekst_indhold2 {
+    display: flex;
+    justify-content: center;
     align-items: center;
   }
 
@@ -40,6 +34,7 @@ const { h2, image, image_alt } = Astro.props;
     height: auto;
     border-radius: 20px;
     object-fit: contain;
+    transform: translateY(50px);
   }
   /* ___________________________ TABLET  ___________________________*/
   @media screen and (min-width: 768px) {
