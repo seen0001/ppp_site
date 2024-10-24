@@ -20,19 +20,22 @@ const { style, linket } = Astro.props;
     overflow: hidden;
     width: 10em;
     height: 10em;
+    background: var(--color_text); /* Start baggrundsfarve */
+    color: white;
     transform: translateY(200px);
   }
 
-  .primary {
-    background: var(--color_text); /* Start baggrundsfarve */
-    color: white;
+  .secondary {
+    font-size: 0.75em;
   }
-  .primary span {
+  .primary span,
+  .secondary span {
     position: relative;
     z-index: 2;
   }
 
-  .primary::before {
+  .primary::before,
+  .secondary::before {
     content: "";
     display: block;
     position: absolute;
@@ -46,42 +49,15 @@ const { style, linket } = Astro.props;
     transform-origin: top left;
   }
 
-  .primary:hover:before {
+  .primary:hover:before,
+  .secondary:hover:before {
     transform: scaleY(1);
     transform-origin: bottom left;
   }
 
   .secondary {
-    background: transparent; /* Start baggrundsfarve */
-    border: 2px solid var(--color_blue);
-    color: var(--color_text);
-  }
-
-  .secondary::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--color_blue) 0%, var(--color_blue) 100%);
-    transform: scaleX(0);
-    transform-origin: bottom left;
-    transition: transform 0.3s ease-in-out;
-    z-index: 1; /* Ligger under teksten */
-  }
-
-  .secondary:hover::after {
-    transform: scaleX(1); /* Skalerer effekten over hele knappen */
-  }
-
-  .secondary span {
-    position: relative;
-    z-index: 2; /* Sørger for, at teksten er ovenpå */
-  }
-
-  .secondary:hover {
-    color: white; /* Gør teksten hvid ved hover */
+    transform: translateX(100px);
+    margin-top: 60px;
   }
 
   /* Responsiv justering af skrifttype */

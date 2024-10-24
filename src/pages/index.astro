@@ -57,7 +57,7 @@ import Cases from "../components/Cases.astro";
           </p>
         </div>
         <div>
-          <!-- <Button linket="/files/resume.pdf" style="secondary">Download CV</Button> -->
+          <Button linket="/files/resume.pdf" style="secondary">Download CV</Button>
         </div>
       </div>
     </TextKasse>
@@ -329,6 +329,7 @@ import Cases from "../components/Cases.astro";
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     font-size: 2rem;
     font-weight: 300;
+    margin-bottom: 60px;
   }
   .buttons-flex {
   }
@@ -410,6 +411,7 @@ import Cases from "../components/Cases.astro";
 
   gsap.to(".scroll-image", {
     scale: 2.5, // Skaler billedet til 1.5 gange størrelsen
+    opacity: 0,
     ease: "power1.out", // En blød easing-effekt
     scrollTrigger: {
       trigger: ".scroll-image",
@@ -442,7 +444,7 @@ import Cases from "../components/Cases.astro";
   });
 
   gsap.to(".billede", {
-    y: -50,
+    y: -20,
     ease: "sine.inOut",
     scrollTrigger: {
       trigger: ".billede",
@@ -458,6 +460,16 @@ import Cases from "../components/Cases.astro";
       trigger: ".primary",
       start: "top bottom",
       end: "bottom 20%",
+      scrub: 1,
+    },
+  });
+
+  gsap.to(".secondary", {
+    x: -20,
+    ease: "sine.inOut",
+    scrollTrigger: {
+      trigger: ".secondary",
+      start: "top bottom",
       scrub: 1,
     },
   });

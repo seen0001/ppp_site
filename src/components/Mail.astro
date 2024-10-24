@@ -5,21 +5,34 @@ const { overskrift, text, link } = Astro.props;
 
 <article>
   <div class="tekst"><p>{text}</p></div>
-
-  <div class="mail">
-    <a href="mailto:sebastian.engelbreth@outlook.dk">sebastian.engelbreth@outlook.dk</a>
-  </div>
-  <div class="mobil">
-    <a href="tel:+4528889648">+4528889648</a>
+  <div class="info-buttons">
+    <div class="mail">
+      <a class="footer-info" href="mailto:sebastian.engelbreth@outlook.dk">sebastian.engelbreth@outlook.dk</a>
+    </div>
+    <div class="mobil">
+      <a class="footer-info" href="tel:+4528889648">+45 28 88 96 48</a>
+    </div>
   </div>
 </article>
 
 <style>
+  .info-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .footer-info {
+    padding: 24px 72px;
+    border: 1px solid var(--color_text);
+    border-radius: 2.5rem;
+  }
   article {
     padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     text-align: center;
+    gap: 20px;
   }
 
   .overskrift p {
@@ -36,7 +49,6 @@ const { overskrift, text, link } = Astro.props;
   }
 
   .mail a {
-    text-decoration: underline 1px;
     font-size: var(--font_size_regular);
   }
   .mail a:hover {
