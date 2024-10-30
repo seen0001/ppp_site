@@ -56,9 +56,11 @@ import Cases from "../components/Cases.astro";
             I am interested in jobs/internships where I can contribute solutions to tasks and challenges while also developing my professional skills and experience.
           </p>
         </div>
-        <div class="line-behind-button"></div>
-        <div>
-          <Button linket="/files/resume.pdf" style="secondary">Download CV</Button>
+        <div class="button-box">
+          <div class="line-behind-button"></div>
+          <div>
+            <Button linket="/files/resume.pdf" style="secondary">Download CV</Button>
+          </div>
         </div>
       </div>
     </TextKasse>
@@ -97,10 +99,13 @@ import Cases from "../components/Cases.astro";
 </script>
 
 <style>
+  .button-box {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+  }
   .line-behind-button {
     position: absolute;
-    top: 246%; /* Juster denne værdi for at placere linjen korrekt i forhold til knappen */
-    left: 8%;
     width: 580px; /* Gør linjen så bred som nødvendigt */
     height: 0.5px; /* Tykkelsen af linjen */
     background-color: black; /* Vælg en passende farve til linjen */
