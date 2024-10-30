@@ -22,10 +22,18 @@ const { overskrift, text, link } = Astro.props;
     margin-top: 40px;
     margin-bottom: 40px;
   }
+
   .footer-info {
     padding: 24px 72px;
-    border: 1px solid var(--color_text);
+    border: 1px solid var(--color_white);
     border-radius: 2.5rem;
+    transition: all 0.5s ease;
+    color: var(--color_white);
+  }
+
+  .footer-info:hover {
+    color: var(--color_text);
+    background-color: var(--color_white);
   }
   article {
     padding-bottom: 40px;
@@ -50,9 +58,6 @@ const { overskrift, text, link } = Astro.props;
 
   .mail a {
     font-size: var(--font_size_regular);
-  }
-  .mail a:hover {
-    color: var(--color_blue);
   }
   @media screen and (min-width: 1024px) {
     article {
