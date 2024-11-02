@@ -6,7 +6,7 @@ import Mail from "../components/Mail.astro";
 <footer id="contact">
   <div class="mails">
     <div class="mails_grid">
-      <div class="footer-billede"></div>
+      <img class="footer-billede" src="/images/cv-photo.avif" alt="Billede af Sebastian Elias Engelbreth" />
       <div class="contact-text">
         <h4>Let's get in touch!</h4>
       </div>
@@ -52,7 +52,10 @@ import Mail from "../components/Mail.astro";
     /* margin-top: 32px; */
   }
   .mails {
-    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .sociale_links {
     display: flex;
@@ -115,21 +118,22 @@ import Mail from "../components/Mail.astro";
   .contact-text {
     text-align: center;
   }
-  .mails_grid {
-    display: flex;
-    align-items: center;
-  }
   .footer-billede {
     margin-right: 1.25em;
-    height: 5em;
-    width: 5em;
-    background: url(/images/cv-photo.avif) center center no-repeat;
+    height: 6em;
+    width: 6em;
     border-radius: 50%;
-    background-size: cover;
+    margin-bottom: 25px;
   }
   .contact-text h4 {
     line-height: 100%;
-    font-size: 6rem;
+    font-size: 2.4rem;
+  }
+
+  .mails_grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   /* ___________________________ TABLET  ___________________________*/
   @media screen and (min-width: 768px) {
@@ -141,12 +145,27 @@ import Mail from "../components/Mail.astro";
     .sociale_links a {
       font-size: var(--font_size_large);
     }
+
+    .contact-text h4 {
+      font-size: 6rem;
+    }
+
+    .mails {
+      margin-inline: 40px;
+    }
+    .mails_grid {
+      flex-direction: row;
+    }
+    .footer-billede {
+      margin-bottom: 0;
+    }
   }
 
   /* ___________________________ DESKTOP  ___________________________*/
   @media screen and (min-width: 1024px) {
     .mails {
-      display: block;
+      align-items: start;
+      margin-inline: 200px;
     }
     .contact-text {
       text-align: start;

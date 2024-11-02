@@ -18,7 +18,8 @@ const { overskrift, text, link } = Astro.props;
 <style>
   .info-buttons {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 80px;
     margin-top: 40px;
     margin-bottom: 40px;
   }
@@ -62,6 +63,11 @@ const { overskrift, text, link } = Astro.props;
   @media screen and (min-width: 1024px) {
     article {
       text-align: start;
+    }
+
+    .info-buttons {
+      flex-direction: row;
+      gap: 25px;
     }
   }
 </style>
